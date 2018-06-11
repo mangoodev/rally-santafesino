@@ -1,0 +1,16 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180611141643",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "etapa",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

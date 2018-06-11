@@ -1,0 +1,102 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myAutoLabel">Create or edit a Auto</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.auto.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.auto.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_marca">Marca</label>
+            <input type="text" class="form-control" name="marca" id="field_marca"
+                    ng-model="vm.auto.marca"
+                    required/>
+            <div ng-show="editForm.marca.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.marca.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_modelo">Modelo</label>
+            <input type="text" class="form-control" name="modelo" id="field_modelo"
+                    ng-model="vm.auto.modelo"
+                    required/>
+            <div ng-show="editForm.modelo.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.modelo.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setFoto($file, vm.auto)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_foto">Foto</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.auto.fotoContentType + ';base64,' + vm.auto.foto}}" style="max-height: 100px;" ng-if="vm.auto.foto" alt="auto image"/>
+                <div ng-if="vm.auto.foto" class="help-block clearfix">
+                    <span class="pull-left">{{vm.auto.fotoContentType}}, {{vm.byteSize(vm.auto.foto)}}</span>
+                    <button type="button" ng-click="vm.auto.foto=null;vm.auto.fotoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setFoto($file, vm.auto)" accept="image/*">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="foto" id="field_foto"
+                    ng-model="vm.auto.foto"
+                    />
+            <input type="hidden" class="form-control" name="fotoContentType" id="field_fotoContentType"
+                    ng-model="vm.auto.fotoContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_descripcion">Descripcion</label>
+            <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                    ng-model="vm.auto.descripcion"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_clase">Clase</label>
+            <input type="text" class="form-control" name="clase" id="field_clase"
+                    ng-model="vm.auto.clase"
+                    required/>
+            <div ng-show="editForm.clase.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.clase.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_copiloto">Copiloto</label>
+            <select class="form-control" id="field_copiloto" name="copiloto" ng-model="vm.auto.copilotoId" ng-options="persona.id as persona.id for persona in vm.personas"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_piloto">Piloto</label>
+            <select class="form-control" id="field_piloto" name="piloto" ng-model="vm.auto.pilotoId" ng-options="persona.id as persona.id for persona in vm.personas"            >
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

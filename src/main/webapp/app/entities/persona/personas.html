@@ -1,0 +1,75 @@
+<div>
+    <h2>Personas</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="persona.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Persona
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="nombre"><span>Nombre</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="apellido"><span>Apellido</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="edad"><span>Edad</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sexo"><span>Sexo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="redes"><span>Redes</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="foto"><span>Foto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="persona in vm.personas track by persona.id">
+                    <td><a ui-sref="persona-detail({id:persona.id})">{{persona.id}}</a></td>
+                    <td>{{persona.nombre}}</td>
+                    <td>{{persona.apellido}}</td>
+                    <td>{{persona.edad}}</td>
+                    <td>{{persona.sexo}}</td>
+                    <td>{{persona.redes}}</td>
+                    <td>
+                        <a ng-if="persona.foto" ng-click="vm.openFile(persona.fotoContentType, persona.foto)">
+                            <img data-ng-src="{{'data:' + persona.fotoContentType + ';base64,' + persona.foto}}" style="max-height: 30px;" alt="persona image"/>
+                        </a>
+                        <span ng-if="persona.foto">{{persona.fotoContentType}}, {{vm.byteSize(persona.foto)}}</span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="persona-detail({id:persona.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="persona.edit({id:persona.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="persona.delete({id:persona.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

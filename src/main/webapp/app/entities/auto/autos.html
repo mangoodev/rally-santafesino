@@ -1,0 +1,81 @@
+<div>
+    <h2>Autos</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="auto.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Auto
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="marca"><span>Marca</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="modelo"><span>Modelo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="foto"><span>Foto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="descripcion"><span>Descripcion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="clase"><span>Clase</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="copilotoId"><span>Copiloto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pilotoId"><span>Piloto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="auto in vm.autos track by auto.id">
+                    <td><a ui-sref="auto-detail({id:auto.id})">{{auto.id}}</a></td>
+                    <td>{{auto.marca}}</td>
+                    <td>{{auto.modelo}}</td>
+                    <td>
+                        <a ng-if="auto.foto" ng-click="vm.openFile(auto.fotoContentType, auto.foto)">
+                            <img data-ng-src="{{'data:' + auto.fotoContentType + ';base64,' + auto.foto}}" style="max-height: 30px;" alt="auto image"/>
+                        </a>
+                        <span ng-if="auto.foto">{{auto.fotoContentType}}, {{vm.byteSize(auto.foto)}}</span>
+                    </td>
+                    <td>{{auto.descripcion}}</td>
+                    <td>{{auto.clase}}</td>
+                    <td>
+                        <a ui-sref="persona-detail({id:auto.copilotoId})">{{auto.copilotoId}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="persona-detail({id:auto.pilotoId})">{{auto.pilotoId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="auto-detail({id:auto.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="auto.edit({id:auto.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="auto.delete({id:auto.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

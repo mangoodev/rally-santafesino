@@ -1,0 +1,11 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [],
+    "changelogDate": "20180611140216",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "localidad",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

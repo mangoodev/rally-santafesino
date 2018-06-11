@@ -1,0 +1,52 @@
+
+<div>
+    <h2><span>Auto</span> {{vm.auto.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Marca</span></dt>
+        <dd>
+            <span>{{vm.auto.marca}}</span>
+        </dd>
+        <dt><span>Modelo</span></dt>
+        <dd>
+            <span>{{vm.auto.modelo}}</span>
+        </dd>
+        <dt><span>Foto</span></dt>
+        <dd>
+            <div ng-if="vm.auto.foto">
+                <a ng-click="vm.openFile(vm.auto.fotoContentType, vm.auto.foto)">
+                    <img data-ng-src="{{'data:' + vm.auto.fotoContentType + ';base64,' + vm.auto.foto}}" style="max-width: 100%;" alt="auto image"/>
+                </a>
+                {{vm.auto.fotoContentType}}, {{vm.byteSize(vm.auto.foto)}}
+            </div>
+        </dd>
+        <dt><span>Descripcion</span></dt>
+        <dd>
+            <span>{{vm.auto.descripcion}}</span>
+        </dd>
+        <dt><span>Clase</span></dt>
+        <dd>
+            <span>{{vm.auto.clase}}</span>
+        </dd>
+        <dt><span>Copiloto</span></dt>
+        <dd>
+            <a ui-sref="persona-detail({id:vm.auto.copilotoId})">{{vm.auto.copilotoId}}</a>
+        </dd>
+        <dt><span>Piloto</span></dt>
+        <dd>
+            <a ui-sref="persona-detail({id:vm.auto.pilotoId})">{{vm.auto.pilotoId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="auto-detail.edit({id:vm.auto.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>
