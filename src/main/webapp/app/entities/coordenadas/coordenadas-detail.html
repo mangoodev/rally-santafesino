@@ -1,0 +1,27 @@
+
+<div>
+    <h2><span>Coordenadas</span> {{vm.coordenadas.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Latitud</span></dt>
+        <dd>
+            <span>{{vm.coordenadas.latitud}}</span>
+        </dd>
+        <dt><span>Longitud</span></dt>
+        <dd>
+            <span>{{vm.coordenadas.longitud}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="coordenadas-detail.edit({id:vm.coordenadas.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

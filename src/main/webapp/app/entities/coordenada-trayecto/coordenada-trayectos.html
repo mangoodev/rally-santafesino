@@ -1,0 +1,66 @@
+<div>
+    <h2>Coordenada Trayectos</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="coordenada-trayecto.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Coordenada Trayecto
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="id_coordenadasId"><span>Id Coordenadas</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="id_trayectoId"><span>Id Trayecto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="coordenada_trayecto in vm.coordenada_trayectos track by coordenada_trayecto.id">
+                    <td><a ui-sref="coordenada-trayecto-detail({id:coordenada_trayecto.id})">{{coordenada_trayecto.id}}</a></td>
+                    <td>
+                        <a ui-sref="coordenadas-detail({id:coordenada_trayecto.id_coordenadasId})">{{coordenada_trayecto.id_coordenadasId}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="trayecto-detail({id:coordenada_trayecto.id_trayectoId})">{{coordenada_trayecto.id_trayectoId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="coordenada-trayecto-detail({id:coordenada_trayecto.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="coordenada-trayecto.edit({id:coordenada_trayecto.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="coordenada-trayecto.delete({id:coordenada_trayecto.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

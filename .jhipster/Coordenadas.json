@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "latitud",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "longitud",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180613131137",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "coordenadas",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

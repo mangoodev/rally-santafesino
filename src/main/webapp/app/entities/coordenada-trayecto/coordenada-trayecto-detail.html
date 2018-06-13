@@ -1,0 +1,27 @@
+
+<div>
+    <h2><span>Coordenada Trayecto</span> {{vm.coordenada_trayecto.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Id Coordenadas</span></dt>
+        <dd>
+            <a ui-sref="coordenadas-detail({id:vm.coordenada_trayecto.id_coordenadasId})">{{vm.coordenada_trayecto.id_coordenadasId}}</a>
+        </dd>
+        <dt><span>Id Trayecto</span></dt>
+        <dd>
+            <a ui-sref="trayecto-detail({id:vm.coordenada_trayecto.id_trayectoId})">{{vm.coordenada_trayecto.id_trayectoId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="coordenada-trayecto-detail.edit({id:vm.coordenada_trayecto.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

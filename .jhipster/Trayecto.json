@@ -1,0 +1,11 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [],
+    "changelogDate": "20180613131303",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "trayecto",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

@@ -15,11 +15,15 @@
     <include file="config/liquibase/changelog/20180613125249_added_entity_Carrera_etapa.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180613125524_added_entity_Etapa_prueba.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180613130114_added_entity_Localidad_carrera.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180613131137_added_entity_Coordenadas.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180613131303_added_entity_Trayecto.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180613131440_added_entity_Coordenada_trayecto.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20180611135405_added_entity_constraints_Auto_carrera.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180613122847_added_entity_constraints_Auto_tiempo_prueba.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180613125249_added_entity_constraints_Carrera_etapa.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180613125524_added_entity_constraints_Etapa_prueba.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180613130114_added_entity_constraints_Localidad_carrera.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180613131440_added_entity_constraints_Coordenada_trayecto.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
