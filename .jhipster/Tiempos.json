@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "auto_tiempo_prueba",
+            "otherEntityName": "auto_tiempo_prueba",
+            "relationshipType": "one-to-one",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "id_tiempos"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "parcial",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180613121655",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "tiempos",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

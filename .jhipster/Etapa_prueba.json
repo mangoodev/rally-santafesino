@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "id_etapa",
+            "otherEntityName": "etapa",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "id_prueba",
+            "otherEntityName": "pruebas",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20180613125524",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "etapa_prueba",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

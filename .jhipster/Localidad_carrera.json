@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "id_carrera",
+            "otherEntityName": "carrera",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "id_localidad",
+            "otherEntityName": "localidad",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20180613130114",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "localidad_carrera",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

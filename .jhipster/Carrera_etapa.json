@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "id_carrera",
+            "otherEntityName": "carrera",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "id_etapa",
+            "otherEntityName": "etapa",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20180613125249",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "carrera_etapa",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

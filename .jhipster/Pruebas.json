@@ -1,0 +1,24 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "numeroDePrueba",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "longitud",
+            "fieldType": "Float",
+            "fieldValidateRules": []
+        }
+    ],
+    "changelogDate": "20180613120611",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "pruebas",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "id_auto",
+            "otherEntityName": "auto",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "id_tiempos",
+            "otherEntityName": "tiempos",
+            "relationshipType": "one-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "auto_tiempo_prueba"
+        },
+        {
+            "relationshipName": "id_prueba",
+            "otherEntityName": "pruebas",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20180613122847",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "auto_tiempo_prueba",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

@@ -1,0 +1,11 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [],
+    "changelogDate": "20180613114548",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "auto_carrear",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}
