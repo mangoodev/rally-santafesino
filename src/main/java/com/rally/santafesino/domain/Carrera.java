@@ -36,8 +36,8 @@ public class Carrera implements Serializable {
     private ZonedDateTime fecha;
 
     @NotNull
-    @Column(name = "localidad", nullable = false)
-    private String localidad;
+    @Column(name = "sede", nullable = false)
+    private String sede;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -87,17 +87,17 @@ public class Carrera implements Serializable {
         this.fecha = fecha;
     }
 
-    public String getLocalidad() {
-        return localidad;
+    public String getSede() {
+        return sede;
     }
 
-    public Carrera localidad(String localidad) {
-        this.localidad = localidad;
+    public Carrera sede(String sede) {
+        this.sede = sede;
         return this;
     }
 
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
+    public void setSede(String sede) {
+        this.sede = sede;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -128,7 +128,7 @@ public class Carrera implements Serializable {
             ", nombre='" + getNombre() + "'" +
             ", descripcion='" + getDescripcion() + "'" +
             ", fecha='" + getFecha() + "'" +
-            ", localidad='" + getLocalidad() + "'" +
+            ", sede='" + getSede() + "'" +
             "}";
     }
 }

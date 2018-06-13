@@ -34,7 +34,7 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="localidad" type="varchar(255)">
+            <column name="sede" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 

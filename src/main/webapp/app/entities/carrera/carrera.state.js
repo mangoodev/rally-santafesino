@@ -118,7 +118,7 @@
                                 nombre: null,
                                 descripcion: null,
                                 fecha: null,
-                                localidad: null,
+                                sede: null,
                                 id: null
                             };
                         }

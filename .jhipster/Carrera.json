@@ -21,7 +21,7 @@
             ]
         },
         {
-            "fieldName": "localidad",
+            "fieldName": "sede",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"

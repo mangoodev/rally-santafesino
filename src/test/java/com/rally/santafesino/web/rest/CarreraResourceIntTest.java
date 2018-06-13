@@ -55,8 +55,8 @@ public class CarreraResourceIntTest {
     private static final ZonedDateTime DEFAULT_FECHA = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_FECHA = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final String DEFAULT_LOCALIDAD = "AAAAAAAAAA";
-    private static final String UPDATED_LOCALIDAD = "BBBBBBBBBB";
+    private static final String DEFAULT_SEDE = "AAAAAAAAAA";
+    private static final String UPDATED_SEDE = "BBBBBBBBBB";
 
     @Autowired
     private CarreraRepository carreraRepository;
@@ -105,7 +105,7 @@ public class CarreraResourceIntTest {
             .nombre(DEFAULT_NOMBRE)
             .descripcion(DEFAULT_DESCRIPCION)
             .fecha(DEFAULT_FECHA)
-            .localidad(DEFAULT_LOCALIDAD);
+            .sede(DEFAULT_SEDE);
         return carrera;
     }
 
@@ -133,7 +133,7 @@ public class CarreraResourceIntTest {
         assertThat(testCarrera.getNombre()).isEqualTo(DEFAULT_NOMBRE);
         assertThat(testCarrera.getDescripcion()).isEqualTo(DEFAULT_DESCRIPCION);
         assertThat(testCarrera.getFecha()).isEqualTo(DEFAULT_FECHA);
-        assertThat(testCarrera.getLocalidad()).isEqualTo(DEFAULT_LOCALIDAD);
+        assertThat(testCarrera.getSede()).isEqualTo(DEFAULT_SEDE);
     }
 
     @Test
@@ -196,10 +196,10 @@ public class CarreraResourceIntTest {
 
     @Test
     @Transactional
-    public void checkLocalidadIsRequired() throws Exception {
+    public void checkSedeIsRequired() throws Exception {
         int databaseSizeBeforeTest = carreraRepository.findAll().size();
         // set the field null
-        carrera.setLocalidad(null);
+        carrera.setSede(null);
 
         // Create the Carrera, which fails.
         CarreraDTO carreraDTO = carreraMapper.toDto(carrera);
@@ -227,7 +227,7 @@ public class CarreraResourceIntTest {
             .andExpect(jsonPath("$.[*].nombre").value(hasItem(DEFAULT_NOMBRE.toString())))
             .andExpect(jsonPath("$.[*].descripcion").value(hasItem(DEFAULT_DESCRIPCION.toString())))
             .andExpect(jsonPath("$.[*].fecha").value(hasItem(sameInstant(DEFAULT_FECHA))))
-            .andExpect(jsonPath("$.[*].localidad").value(hasItem(DEFAULT_LOCALIDAD.toString())));
+            .andExpect(jsonPath("$.[*].sede").value(hasItem(DEFAULT_SEDE.toString())));
     }
 
     @Test
@@ -244,7 +244,7 @@ public class CarreraResourceIntTest {
             .andExpect(jsonPath("$.nombre").value(DEFAULT_NOMBRE.toString()))
             .andExpect(jsonPath("$.descripcion").value(DEFAULT_DESCRIPCION.toString()))
             .andExpect(jsonPath("$.fecha").value(sameInstant(DEFAULT_FECHA)))
-            .andExpect(jsonPath("$.localidad").value(DEFAULT_LOCALIDAD.toString()));
+            .andExpect(jsonPath("$.sede").value(DEFAULT_SEDE.toString()));
     }
 
     @Test
@@ -270,7 +270,7 @@ public class CarreraResourceIntTest {
             .nombre(UPDATED_NOMBRE)
             .descripcion(UPDATED_DESCRIPCION)
             .fecha(UPDATED_FECHA)
-            .localidad(UPDATED_LOCALIDAD);
+            .sede(UPDATED_SEDE);
         CarreraDTO carreraDTO = carreraMapper.toDto(updatedCarrera);
 
         restCarreraMockMvc.perform(put("/api/carreras")
@@ -285,7 +285,7 @@ public class CarreraResourceIntTest {
         assertThat(testCarrera.getNombre()).isEqualTo(UPDATED_NOMBRE);
         assertThat(testCarrera.getDescripcion()).isEqualTo(UPDATED_DESCRIPCION);
         assertThat(testCarrera.getFecha()).isEqualTo(UPDATED_FECHA);
-        assertThat(testCarrera.getLocalidad()).isEqualTo(UPDATED_LOCALIDAD);
+        assertThat(testCarrera.getSede()).isEqualTo(UPDATED_SEDE);
     }
 
     @Test

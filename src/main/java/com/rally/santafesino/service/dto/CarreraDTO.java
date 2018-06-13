@@ -22,7 +22,7 @@ public class CarreraDTO implements Serializable {
     private ZonedDateTime fecha;
 
     @NotNull
-    private String localidad;
+    private String sede;
 
     public Long getId() {
         return id;
@@ -56,12 +56,12 @@ public class CarreraDTO implements Serializable {
         this.fecha = fecha;
     }
 
-    public String getLocalidad() {
-        return localidad;
+    public String getSede() {
+        return sede;
     }
 
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
+    public void setSede(String sede) {
+        this.sede = sede;
     }
 
     @Override
@@ -92,7 +92,7 @@ public class CarreraDTO implements Serializable {
             ", nombre='" + getNombre() + "'" +
             ", descripcion='" + getDescripcion() + "'" +
             ", fecha='" + getFecha() + "'" +
-            ", localidad='" + getLocalidad() + "'" +
+            ", sede='" + getSede() + "'" +
             "}";
     }
 }
