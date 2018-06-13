@@ -38,6 +38,8 @@ public class CacheConfiguration {
             cm.createCache(com.rally.santafesino.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.rally.santafesino.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.rally.santafesino.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.rally.santafesino.domain.Auto.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rally.santafesino.domain.Persona.class.getName(), jcacheConfiguration);
             cm.createCache(com.rally.santafesino.domain.Carrera.class.getName(), jcacheConfiguration);
             cm.createCache(com.rally.santafesino.domain.Auto_carrera.class.getName(), jcacheConfiguration);
             cm.createCache(com.rally.santafesino.domain.Localidad.class.getName(), jcacheConfiguration);
