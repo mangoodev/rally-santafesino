@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "id_prueba",
+            "otherEntityName": "pruebas",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "id_trayecto",
+            "otherEntityName": "trayecto",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20180613132339",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "trayecto_prueba",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}
