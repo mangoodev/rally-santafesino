@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Auto_tiempo_prueba.
+    -->
+    <changeSet id="20180613122847-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="id_auto_id"
+                                 baseTableName="auto_tiempo_prueba"
+                                 constraintName="fk_auto_tiempo_prueba_id_auto_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="auto"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_tiempos_id"
+                                 baseTableName="auto_tiempo_prueba"
+                                 constraintName="fk_auto_tiempo_prueba_id_tiempos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tiempos"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_prueba_id"
+                                 baseTableName="auto_tiempo_prueba"
+                                 constraintName="fk_auto_tiempo_prueba_id_prueba_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pruebas"/>
+
+    </changeSet>
+</databaseChangeLog>

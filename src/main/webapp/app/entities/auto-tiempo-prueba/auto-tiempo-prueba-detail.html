@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span>Auto Tiempo Prueba</span> {{vm.auto_tiempo_prueba.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Id Auto</span></dt>
+        <dd>
+            <a ui-sref="auto-detail({id:vm.auto_tiempo_prueba.id_autoId})">{{vm.auto_tiempo_prueba.id_autoId}}</a>
+        </dd>
+        <dt><span>Id Tiempos</span></dt>
+        <dd>
+            <a ui-sref="tiempos-detail({id:vm.auto_tiempo_prueba.id_tiemposId})">{{vm.auto_tiempo_prueba.id_tiemposId}}</a>
+        </dd>
+        <dt><span>Id Prueba</span></dt>
+        <dd>
+            <a ui-sref="pruebas-detail({id:vm.auto_tiempo_prueba.id_pruebaId})">{{vm.auto_tiempo_prueba.id_pruebaId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="auto-tiempo-prueba-detail.edit({id:vm.auto_tiempo_prueba.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

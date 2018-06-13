@@ -42,6 +42,9 @@ public class CacheConfiguration {
             cm.createCache(com.rally.santafesino.domain.Auto_carrera.class.getName(), jcacheConfiguration);
             cm.createCache(com.rally.santafesino.domain.Localidad.class.getName(), jcacheConfiguration);
             cm.createCache(com.rally.santafesino.domain.Etapa.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rally.santafesino.domain.Pruebas.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rally.santafesino.domain.Tiempos.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rally.santafesino.domain.Auto_tiempo_prueba.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

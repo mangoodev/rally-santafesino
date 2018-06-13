@@ -1,0 +1,70 @@
+<div>
+    <h2>Auto Tiempo Pruebas</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="auto-tiempo-prueba.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Auto Tiempo Prueba
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="id_autoId"><span>Id Auto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="id_tiemposId"><span>Id Tiempos</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="id_pruebaId"><span>Id Prueba</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="auto_tiempo_prueba in vm.auto_tiempo_pruebas track by auto_tiempo_prueba.id">
+                    <td><a ui-sref="auto-tiempo-prueba-detail({id:auto_tiempo_prueba.id})">{{auto_tiempo_prueba.id}}</a></td>
+                    <td>
+                        <a ui-sref="auto-detail({id:auto_tiempo_prueba.id_autoId})">{{auto_tiempo_prueba.id_autoId}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="tiempos-detail({id:auto_tiempo_prueba.id_tiemposId})">{{auto_tiempo_prueba.id_tiemposId}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="pruebas-detail({id:auto_tiempo_prueba.id_pruebaId})">{{auto_tiempo_prueba.id_pruebaId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="auto-tiempo-prueba-detail({id:auto_tiempo_prueba.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="auto-tiempo-prueba.edit({id:auto_tiempo_prueba.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="auto-tiempo-prueba.delete({id:auto_tiempo_prueba.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>
