@@ -2,11 +2,11 @@
     'use strict';
     angular
         .module('rallyApp')
-        .factory('Coordenada_trayecto', Coordenada_trayecto);
+        .factory('CoordenadaTrayecto', CoordenadaTrayecto);
 
-    Coordenada_trayecto.$inject = ['$resource'];
+    CoordenadaTrayecto.$inject = ['$resource'];
 
-    function Coordenada_trayecto ($resource) {
+    function CoordenadaTrayecto ($resource) {
         var resourceUrl =  'api/coordenada-trayectos/:id';
 
         return $resource(resourceUrl, {}, {

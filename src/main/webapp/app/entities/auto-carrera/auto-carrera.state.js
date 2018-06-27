@@ -14,12 +14,12 @@
             url: '/auto-carrera?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Auto_carreras'
+                pageTitle: 'AutoCarreras'
             },
             views: {
                 'content@': {
                     templateUrl: 'app/entities/auto-carrera/auto-carreras.html',
-                    controller: 'Auto_carreraController',
+                    controller: 'AutoCarreraController',
                     controllerAs: 'vm'
                 }
             },
@@ -51,18 +51,18 @@
             url: '/auto-carrera/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Auto_carrera'
+                pageTitle: 'AutoCarrera'
             },
             views: {
                 'content@': {
                     templateUrl: 'app/entities/auto-carrera/auto-carrera-detail.html',
-                    controller: 'Auto_carreraDetailController',
+                    controller: 'AutoCarreraDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
-                entity: ['$stateParams', 'Auto_carrera', function($stateParams, Auto_carrera) {
-                    return Auto_carrera.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'AutoCarrera', function($stateParams, AutoCarrera) {
+                    return AutoCarrera.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
@@ -83,13 +83,13 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/auto-carrera/auto-carrera-dialog.html',
-                    controller: 'Auto_carreraDialogController',
+                    controller: 'AutoCarreraDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Auto_carrera', function(Auto_carrera) {
-                            return Auto_carrera.get({id : $stateParams.id}).$promise;
+                        entity: ['AutoCarrera', function(AutoCarrera) {
+                            return AutoCarrera.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -108,14 +108,13 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/auto-carrera/auto-carrera-dialog.html',
-                    controller: 'Auto_carreraDialogController',
+                    controller: 'AutoCarreraDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: function () {
                             return {
-                                creation_date: null,
                                 id: null
                             };
                         }
@@ -136,13 +135,13 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/auto-carrera/auto-carrera-dialog.html',
-                    controller: 'Auto_carreraDialogController',
+                    controller: 'AutoCarreraDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Auto_carrera', function(Auto_carrera) {
-                            return Auto_carrera.get({id : $stateParams.id}).$promise;
+                        entity: ['AutoCarrera', function(AutoCarrera) {
+                            return AutoCarrera.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -161,12 +160,12 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/auto-carrera/auto-carrera-delete-dialog.html',
-                    controller: 'Auto_carreraDeleteController',
+                    controller: 'AutoCarreraDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Auto_carrera', function(Auto_carrera) {
-                            return Auto_carrera.get({id : $stateParams.id}).$promise;
+                        entity: ['AutoCarrera', function(AutoCarrera) {
+                            return AutoCarrera.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {

@@ -3,23 +3,23 @@
 
     angular
         .module('rallyApp')
-        .controller('Auto_tiempo_pruebaDialogController', Auto_tiempo_pruebaDialogController);
+        .controller('AutoTiempoPruebaDialogController', AutoTiempoPruebaDialogController);
 
-    Auto_tiempo_pruebaDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Auto_tiempo_prueba', 'Auto', 'Tiempos', 'Pruebas'];
+    AutoTiempoPruebaDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'AutoTiempoPrueba', 'Auto', 'Tiempos', 'Pruebas'];
 
-    function Auto_tiempo_pruebaDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Auto_tiempo_prueba, Auto, Tiempos, Pruebas) {
+    function AutoTiempoPruebaDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, AutoTiempoPrueba, Auto, Tiempos, Pruebas) {
         var vm = this;
 
-        vm.auto_tiempo_prueba = entity;
+        vm.autoTiempoPrueba = entity;
         vm.clear = clear;
         vm.save = save;
         vm.autos = Auto.query();
         vm.id_tiempos = Tiempos.query({filter: 'auto_tiempo_prueba-is-null'});
-        $q.all([vm.auto_tiempo_prueba.$promise, vm.id_tiempos.$promise]).then(function() {
-            if (!vm.auto_tiempo_prueba.id_tiemposId) {
+        $q.all([vm.autoTiempoPrueba.$promise, vm.id_tiempos.$promise]).then(function() {
+            if (!vm.autoTiempoPrueba.id_tiemposId) {
                 return $q.reject();
             }
-            return Tiempos.get({id : vm.auto_tiempo_prueba.id_tiemposId}).$promise;
+            return Tiempos.get({id : vm.autoTiempoPrueba.id_tiemposId}).$promise;
         }).then(function(id_tiempos) {
             vm.id_tiempos.push(id_tiempos);
         });
@@ -35,15 +35,15 @@
 
         function save () {
             vm.isSaving = true;
-            if (vm.auto_tiempo_prueba.id !== null) {
-                Auto_tiempo_prueba.update(vm.auto_tiempo_prueba, onSaveSuccess, onSaveError);
+            if (vm.autoTiempoPrueba.id !== null) {
+                AutoTiempoPrueba.update(vm.autoTiempoPrueba, onSaveSuccess, onSaveError);
             } else {
-                Auto_tiempo_prueba.save(vm.auto_tiempo_prueba, onSaveSuccess, onSaveError);
+                AutoTiempoPrueba.save(vm.autoTiempoPrueba, onSaveSuccess, onSaveError);
             }
         }
 
         function onSaveSuccess (result) {
-            $scope.$emit('rallyApp:auto_tiempo_pruebaUpdate', result);
+            $scope.$emit('rallyApp:autoTiempoPruebaUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }

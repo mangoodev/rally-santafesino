@@ -62,15 +62,15 @@ public class TiemposService {
 
 
     /**
-     *  get all the tiempos where Auto_tiempo_prueba is null.
+     *  get all the tiempos where AutoTiempoPrueba is null.
      *  @return the list of entities
      */
     @Transactional(readOnly = true) 
-    public List<TiemposDTO> findAllWhereAuto_tiempo_pruebaIsNull() {
-        log.debug("Request to get all tiempos where Auto_tiempo_prueba is null");
+    public List<TiemposDTO> findAllWhereAutoTiempoPruebaIsNull() {
+        log.debug("Request to get all tiempos where AutoTiempoPrueba is null");
         return StreamSupport
             .stream(tiemposRepository.findAll().spliterator(), false)
-            .filter(tiempos -> tiempos.getAuto_tiempo_prueba() == null)
+            .filter(tiempos -> tiempos.getAutoTiempoPrueba() == null)
             .map(tiemposMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }

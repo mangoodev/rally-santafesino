@@ -25,30 +25,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="coordenada_trayecto in vm.coordenada_trayectos track by coordenada_trayecto.id">
-                    <td><a ui-sref="coordenada-trayecto-detail({id:coordenada_trayecto.id})">{{coordenada_trayecto.id}}</a></td>
+                <tr ng-repeat="coordenadaTrayecto in vm.coordenadaTrayectos track by coordenadaTrayecto.id">
+                    <td><a ui-sref="coordenada-trayecto-detail({id:coordenadaTrayecto.id})">{{coordenadaTrayecto.id}}</a></td>
                     <td>
-                        <a ui-sref="coordenadas-detail({id:coordenada_trayecto.id_coordenadasId})">{{coordenada_trayecto.id_coordenadasId}}</a>
+                        <a ui-sref="coordenadas-detail({id:coordenadaTrayecto.id_coordenadasId})">{{coordenadaTrayecto.id_coordenadasId}}</a>
                     </td>
                     <td>
-                        <a ui-sref="trayecto-detail({id:coordenada_trayecto.id_trayectoId})">{{coordenada_trayecto.id_trayectoId}}</a>
+                        <a ui-sref="trayecto-detail({id:coordenadaTrayecto.id_trayectoId})">{{coordenadaTrayecto.id_trayectoId}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
-                                    ui-sref="coordenada-trayecto-detail({id:coordenada_trayecto.id})"
+                                    ui-sref="coordenada-trayecto-detail({id:coordenadaTrayecto.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="coordenada-trayecto.edit({id:coordenada_trayecto.id})"
+                                    ui-sref="coordenada-trayecto.edit({id:coordenadaTrayecto.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="coordenada-trayecto.delete({id:coordenada_trayecto.id})"
+                                    ui-sref="coordenada-trayecto.delete({id:coordenadaTrayecto.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-sm-down"></span>

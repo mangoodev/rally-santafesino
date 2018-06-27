@@ -4,19 +4,19 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myLocalidad_carreraLabel">Create or edit a Localidad Carrera</h4>
+        <h4 class="modal-title" id="myLocalidadCarreraLabel">Create or edit a Localidad Carrera</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.localidad_carrera.id">
+        <div class="form-group" ng-show="vm.localidadCarrera.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.localidad_carrera.id" readonly />
+                    ng-model="vm.localidadCarrera.id" readonly />
         </div>
 
         <div class="form-group">
             <label for="field_id_carrera">Id Carrera</label>
-            <select class="form-control" id="field_id_carrera" name="id_carrera" ng-model="vm.localidad_carrera.id_carreraId" ng-options="carrera.id as carrera.id for carrera in vm.carreras"             required>
+            <select class="form-control" id="field_id_carrera" name="id_carrera" ng-model="vm.localidadCarrera.id_carreraId" ng-options="carrera.id as carrera.id for carrera in vm.carreras"             required>
             </select>
         </div>
         <div ng-show="editForm.id_carrera.$invalid">
@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
             <label for="field_id_localidad">Id Localidad</label>
-            <select class="form-control" id="field_id_localidad" name="id_localidad" ng-model="vm.localidad_carrera.id_localidadId" ng-options="localidad.id as localidad.id for localidad in vm.localidads"             required>
+            <select class="form-control" id="field_id_localidad" name="id_localidad" ng-model="vm.localidadCarrera.id_localidadId" ng-options="localidad.id as localidad.id for localidad in vm.localidads"             required>
             </select>
         </div>
         <div ng-show="editForm.id_localidad.$invalid">

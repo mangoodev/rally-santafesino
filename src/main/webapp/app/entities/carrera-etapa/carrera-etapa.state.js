@@ -14,12 +14,12 @@
             url: '/carrera-etapa?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Carrera_etapas'
+                pageTitle: 'CarreraEtapas'
             },
             views: {
                 'content@': {
                     templateUrl: 'app/entities/carrera-etapa/carrera-etapas.html',
-                    controller: 'Carrera_etapaController',
+                    controller: 'CarreraEtapaController',
                     controllerAs: 'vm'
                 }
             },
@@ -51,18 +51,18 @@
             url: '/carrera-etapa/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Carrera_etapa'
+                pageTitle: 'CarreraEtapa'
             },
             views: {
                 'content@': {
                     templateUrl: 'app/entities/carrera-etapa/carrera-etapa-detail.html',
-                    controller: 'Carrera_etapaDetailController',
+                    controller: 'CarreraEtapaDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
-                entity: ['$stateParams', 'Carrera_etapa', function($stateParams, Carrera_etapa) {
-                    return Carrera_etapa.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'CarreraEtapa', function($stateParams, CarreraEtapa) {
+                    return CarreraEtapa.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
@@ -83,13 +83,13 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/carrera-etapa/carrera-etapa-dialog.html',
-                    controller: 'Carrera_etapaDialogController',
+                    controller: 'CarreraEtapaDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Carrera_etapa', function(Carrera_etapa) {
-                            return Carrera_etapa.get({id : $stateParams.id}).$promise;
+                        entity: ['CarreraEtapa', function(CarreraEtapa) {
+                            return CarreraEtapa.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -108,7 +108,7 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/carrera-etapa/carrera-etapa-dialog.html',
-                    controller: 'Carrera_etapaDialogController',
+                    controller: 'CarreraEtapaDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
@@ -135,13 +135,13 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/carrera-etapa/carrera-etapa-dialog.html',
-                    controller: 'Carrera_etapaDialogController',
+                    controller: 'CarreraEtapaDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Carrera_etapa', function(Carrera_etapa) {
-                            return Carrera_etapa.get({id : $stateParams.id}).$promise;
+                        entity: ['CarreraEtapa', function(CarreraEtapa) {
+                            return CarreraEtapa.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -160,12 +160,12 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/carrera-etapa/carrera-etapa-delete-dialog.html',
-                    controller: 'Carrera_etapaDeleteController',
+                    controller: 'CarreraEtapaDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Carrera_etapa', function(Carrera_etapa) {
-                            return Carrera_etapa.get({id : $stateParams.id}).$promise;
+                        entity: ['CarreraEtapa', function(CarreraEtapa) {
+                            return CarreraEtapa.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {

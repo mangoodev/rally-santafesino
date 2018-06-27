@@ -14,12 +14,12 @@
             url: '/etapa-prueba?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Etapa_pruebas'
+                pageTitle: 'EtapaPruebas'
             },
             views: {
                 'content@': {
                     templateUrl: 'app/entities/etapa-prueba/etapa-pruebas.html',
-                    controller: 'Etapa_pruebaController',
+                    controller: 'EtapaPruebaController',
                     controllerAs: 'vm'
                 }
             },
@@ -51,18 +51,18 @@
             url: '/etapa-prueba/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Etapa_prueba'
+                pageTitle: 'EtapaPrueba'
             },
             views: {
                 'content@': {
                     templateUrl: 'app/entities/etapa-prueba/etapa-prueba-detail.html',
-                    controller: 'Etapa_pruebaDetailController',
+                    controller: 'EtapaPruebaDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
-                entity: ['$stateParams', 'Etapa_prueba', function($stateParams, Etapa_prueba) {
-                    return Etapa_prueba.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'EtapaPrueba', function($stateParams, EtapaPrueba) {
+                    return EtapaPrueba.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
@@ -83,13 +83,13 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/etapa-prueba/etapa-prueba-dialog.html',
-                    controller: 'Etapa_pruebaDialogController',
+                    controller: 'EtapaPruebaDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Etapa_prueba', function(Etapa_prueba) {
-                            return Etapa_prueba.get({id : $stateParams.id}).$promise;
+                        entity: ['EtapaPrueba', function(EtapaPrueba) {
+                            return EtapaPrueba.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -108,7 +108,7 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/etapa-prueba/etapa-prueba-dialog.html',
-                    controller: 'Etapa_pruebaDialogController',
+                    controller: 'EtapaPruebaDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
@@ -135,13 +135,13 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/etapa-prueba/etapa-prueba-dialog.html',
-                    controller: 'Etapa_pruebaDialogController',
+                    controller: 'EtapaPruebaDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Etapa_prueba', function(Etapa_prueba) {
-                            return Etapa_prueba.get({id : $stateParams.id}).$promise;
+                        entity: ['EtapaPrueba', function(EtapaPrueba) {
+                            return EtapaPrueba.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -160,12 +160,12 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/etapa-prueba/etapa-prueba-delete-dialog.html',
-                    controller: 'Etapa_pruebaDeleteController',
+                    controller: 'EtapaPruebaDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Etapa_prueba', function(Etapa_prueba) {
-                            return Etapa_prueba.get({id : $stateParams.id}).$promise;
+                        entity: ['EtapaPrueba', function(EtapaPrueba) {
+                            return EtapaPrueba.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {

@@ -25,30 +25,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="trayecto_prueba in vm.trayecto_pruebas track by trayecto_prueba.id">
-                    <td><a ui-sref="trayecto-prueba-detail({id:trayecto_prueba.id})">{{trayecto_prueba.id}}</a></td>
+                <tr ng-repeat="trayectoPrueba in vm.trayectoPruebas track by trayectoPrueba.id">
+                    <td><a ui-sref="trayecto-prueba-detail({id:trayectoPrueba.id})">{{trayectoPrueba.id}}</a></td>
                     <td>
-                        <a ui-sref="pruebas-detail({id:trayecto_prueba.id_pruebaId})">{{trayecto_prueba.id_pruebaId}}</a>
+                        <a ui-sref="pruebas-detail({id:trayectoPrueba.id_pruebaId})">{{trayectoPrueba.id_pruebaId}}</a>
                     </td>
                     <td>
-                        <a ui-sref="trayecto-detail({id:trayecto_prueba.id_trayectoId})">{{trayecto_prueba.id_trayectoId}}</a>
+                        <a ui-sref="trayecto-detail({id:trayectoPrueba.id_trayectoId})">{{trayectoPrueba.id_trayectoId}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
-                                    ui-sref="trayecto-prueba-detail({id:trayecto_prueba.id})"
+                                    ui-sref="trayecto-prueba-detail({id:trayectoPrueba.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="trayecto-prueba.edit({id:trayecto_prueba.id})"
+                                    ui-sref="trayecto-prueba.edit({id:trayectoPrueba.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="trayecto-prueba.delete({id:trayecto_prueba.id})"
+                                    ui-sref="trayecto-prueba.delete({id:trayectoPrueba.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-sm-down"></span>

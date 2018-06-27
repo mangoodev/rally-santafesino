@@ -2,11 +2,11 @@
     'use strict';
     angular
         .module('rallyApp')
-        .factory('Auto_carrera', Auto_carrera);
+        .factory('AutoCarrera', AutoCarrera);
 
-    Auto_carrera.$inject = ['$resource', 'DateUtils'];
+    AutoCarrera.$inject = ['$resource'];
 
-    function Auto_carrera ($resource, DateUtils) {
+    function AutoCarrera ($resource) {
         var resourceUrl =  'api/auto-carreras/:id';
 
         return $resource(resourceUrl, {}, {
@@ -16,7 +16,6 @@
                 transformResponse: function (data) {
                     if (data) {
                         data = angular.fromJson(data);
-                        data.creation_date = DateUtils.convertDateTimeFromServer(data.creation_date);
                     }
                     return data;
                 }

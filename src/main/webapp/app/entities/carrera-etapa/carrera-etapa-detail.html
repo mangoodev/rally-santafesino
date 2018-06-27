@@ -1,16 +1,16 @@
 
 <div>
-    <h2><span>Carrera Etapa</span> {{vm.carrera_etapa.id}}</h2>
+    <h2><span>Carrera Etapa</span> {{vm.carreraEtapa.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
         <dt><span>Id Carrera</span></dt>
         <dd>
-            <a ui-sref="carrera-detail({id:vm.carrera_etapa.id_carreraId})">{{vm.carrera_etapa.id_carreraId}}</a>
+            <a ui-sref="carrera-detail({id:vm.carreraEtapa.id_carreraId})">{{vm.carreraEtapa.id_carreraId}}</a>
         </dd>
         <dt><span>Id Etapa</span></dt>
         <dd>
-            <a ui-sref="etapa-detail({id:vm.carrera_etapa.id_etapaId})">{{vm.carrera_etapa.id_etapaId}}</a>
+            <a ui-sref="etapa-detail({id:vm.carreraEtapa.id_etapaId})">{{vm.carreraEtapa.id_etapaId}}</a>
         </dd>
     </dl>
 
@@ -20,7 +20,7 @@
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
 
-    <button type="button" ui-sref="carrera-etapa-detail.edit({id:vm.carrera_etapa.id})" class="btn btn-primary">
+    <button type="button" ui-sref="carrera-etapa-detail.edit({id:vm.carreraEtapa.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-sm-down"> Edit</span>
     </button>

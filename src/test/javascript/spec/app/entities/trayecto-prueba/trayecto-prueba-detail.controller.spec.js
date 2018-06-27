@@ -2,9 +2,9 @@
 
 describe('Controller Tests', function() {
 
-    describe('Trayecto_prueba Management Detail Controller', function() {
+    describe('TrayectoPrueba Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockTrayecto_prueba, MockPruebas, MockTrayecto;
+        var MockEntity, MockPreviousState, MockTrayectoPrueba, MockPruebas, MockTrayecto;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -12,7 +12,7 @@ describe('Controller Tests', function() {
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
             MockPreviousState = jasmine.createSpy('MockPreviousState');
-            MockTrayecto_prueba = jasmine.createSpy('MockTrayecto_prueba');
+            MockTrayectoPrueba = jasmine.createSpy('MockTrayectoPrueba');
             MockPruebas = jasmine.createSpy('MockPruebas');
             MockTrayecto = jasmine.createSpy('MockTrayecto');
             
@@ -22,19 +22,19 @@ describe('Controller Tests', function() {
                 '$rootScope': $rootScope,
                 'entity': MockEntity,
                 'previousState': MockPreviousState,
-                'Trayecto_prueba': MockTrayecto_prueba,
+                'TrayectoPrueba': MockTrayectoPrueba,
                 'Pruebas': MockPruebas,
                 'Trayecto': MockTrayecto
             };
             createController = function() {
-                $injector.get('$controller')("Trayecto_pruebaDetailController", locals);
+                $injector.get('$controller')("TrayectoPruebaDetailController", locals);
             };
         }));
 
 
         describe('Root Scope Listening', function() {
             it('Unregisters root scope listener upon scope destruction', function() {
-                var eventType = 'rallyApp:trayecto_pruebaUpdate';
+                var eventType = 'rallyApp:trayectoPruebaUpdate';
 
                 createController();
                 expect($rootScope.$$listenerCount[eventType]).toEqual(1);

@@ -14,12 +14,12 @@
             url: '/coordenada-trayecto?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Coordenada_trayectos'
+                pageTitle: 'CoordenadaTrayectos'
             },
             views: {
                 'content@': {
                     templateUrl: 'app/entities/coordenada-trayecto/coordenada-trayectos.html',
-                    controller: 'Coordenada_trayectoController',
+                    controller: 'CoordenadaTrayectoController',
                     controllerAs: 'vm'
                 }
             },
@@ -51,18 +51,18 @@
             url: '/coordenada-trayecto/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Coordenada_trayecto'
+                pageTitle: 'CoordenadaTrayecto'
             },
             views: {
                 'content@': {
                     templateUrl: 'app/entities/coordenada-trayecto/coordenada-trayecto-detail.html',
-                    controller: 'Coordenada_trayectoDetailController',
+                    controller: 'CoordenadaTrayectoDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
-                entity: ['$stateParams', 'Coordenada_trayecto', function($stateParams, Coordenada_trayecto) {
-                    return Coordenada_trayecto.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'CoordenadaTrayecto', function($stateParams, CoordenadaTrayecto) {
+                    return CoordenadaTrayecto.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
@@ -83,13 +83,13 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/coordenada-trayecto/coordenada-trayecto-dialog.html',
-                    controller: 'Coordenada_trayectoDialogController',
+                    controller: 'CoordenadaTrayectoDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Coordenada_trayecto', function(Coordenada_trayecto) {
-                            return Coordenada_trayecto.get({id : $stateParams.id}).$promise;
+                        entity: ['CoordenadaTrayecto', function(CoordenadaTrayecto) {
+                            return CoordenadaTrayecto.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -108,7 +108,7 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/coordenada-trayecto/coordenada-trayecto-dialog.html',
-                    controller: 'Coordenada_trayectoDialogController',
+                    controller: 'CoordenadaTrayectoDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
@@ -135,13 +135,13 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/coordenada-trayecto/coordenada-trayecto-dialog.html',
-                    controller: 'Coordenada_trayectoDialogController',
+                    controller: 'CoordenadaTrayectoDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Coordenada_trayecto', function(Coordenada_trayecto) {
-                            return Coordenada_trayecto.get({id : $stateParams.id}).$promise;
+                        entity: ['CoordenadaTrayecto', function(CoordenadaTrayecto) {
+                            return CoordenadaTrayecto.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -160,12 +160,12 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/coordenada-trayecto/coordenada-trayecto-delete-dialog.html',
-                    controller: 'Coordenada_trayectoDeleteController',
+                    controller: 'CoordenadaTrayectoDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Coordenada_trayecto', function(Coordenada_trayecto) {
-                            return Coordenada_trayecto.get({id : $stateParams.id}).$promise;
+                        entity: ['CoordenadaTrayecto', function(CoordenadaTrayecto) {
+                            return CoordenadaTrayecto.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {

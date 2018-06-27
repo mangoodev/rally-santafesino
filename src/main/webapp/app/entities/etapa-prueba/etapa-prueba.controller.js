@@ -3,11 +3,11 @@
 
     angular
         .module('rallyApp')
-        .controller('Etapa_pruebaController', Etapa_pruebaController);
+        .controller('EtapaPruebaController', EtapaPruebaController);
 
-    Etapa_pruebaController.$inject = ['$state', 'Etapa_prueba', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    EtapaPruebaController.$inject = ['$state', 'EtapaPrueba', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
-    function Etapa_pruebaController($state, Etapa_prueba, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function EtapaPruebaController($state, EtapaPrueba, ParseLinks, AlertService, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -20,7 +20,7 @@
         loadAll();
 
         function loadAll () {
-            Etapa_prueba.query({
+            EtapaPrueba.query({
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort()
@@ -36,7 +36,7 @@
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
-                vm.etapa_pruebas = data;
+                vm.etapaPruebas = data;
                 vm.page = pagingParams.page;
             }
             function onError(error) {

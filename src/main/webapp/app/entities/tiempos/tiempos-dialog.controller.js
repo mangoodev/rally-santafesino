@@ -5,15 +5,15 @@
         .module('rallyApp')
         .controller('TiemposDialogController', TiemposDialogController);
 
-    TiemposDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Tiempos', 'Auto_tiempo_prueba'];
+    TiemposDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Tiempos', 'AutoTiempoPrueba'];
 
-    function TiemposDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Tiempos, Auto_tiempo_prueba) {
+    function TiemposDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Tiempos, AutoTiempoPrueba) {
         var vm = this;
 
         vm.tiempos = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.auto_tiempo_pruebas = Auto_tiempo_prueba.query();
+        vm.autotiempopruebas = AutoTiempoPrueba.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

@@ -93,9 +93,9 @@ public class TiemposResource {
     @GetMapping("/tiempos")
     @Timed
     public ResponseEntity<List<TiemposDTO>> getAllTiempos(Pageable pageable, @RequestParam(required = false) String filter) {
-        if ("auto_tiempo_prueba-is-null".equals(filter)) {
-            log.debug("REST request to get all Tiemposs where auto_tiempo_prueba is null");
-            return new ResponseEntity<>(tiemposService.findAllWhereAuto_tiempo_pruebaIsNull(),
+        if ("autotiempoprueba-is-null".equals(filter)) {
+            log.debug("REST request to get all Tiemposs where autoTiempoPrueba is null");
+            return new ResponseEntity<>(tiemposService.findAllWhereAutoTiempoPruebaIsNull(),
                     HttpStatus.OK);
         }
         log.debug("REST request to get a page of Tiempos");

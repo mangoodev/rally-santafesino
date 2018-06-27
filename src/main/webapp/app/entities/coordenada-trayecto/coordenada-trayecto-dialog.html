@@ -4,19 +4,19 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myCoordenada_trayectoLabel">Create or edit a Coordenada Trayecto</h4>
+        <h4 class="modal-title" id="myCoordenadaTrayectoLabel">Create or edit a Coordenada Trayecto</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.coordenada_trayecto.id">
+        <div class="form-group" ng-show="vm.coordenadaTrayecto.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.coordenada_trayecto.id" readonly />
+                    ng-model="vm.coordenadaTrayecto.id" readonly />
         </div>
 
         <div class="form-group">
             <label for="field_id_coordenadas">Id Coordenadas</label>
-            <select class="form-control" id="field_id_coordenadas" name="id_coordenadas" ng-model="vm.coordenada_trayecto.id_coordenadasId" ng-options="coordenadas.id as coordenadas.id for coordenadas in vm.coordenadas"             required>
+            <select class="form-control" id="field_id_coordenadas" name="id_coordenadas" ng-model="vm.coordenadaTrayecto.id_coordenadasId" ng-options="coordenadas.id as coordenadas.id for coordenadas in vm.coordenadas"             required>
             </select>
         </div>
         <div ng-show="editForm.id_coordenadas.$invalid">
@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
             <label for="field_id_trayecto">Id Trayecto</label>
-            <select class="form-control" id="field_id_trayecto" name="id_trayecto" ng-model="vm.coordenada_trayecto.id_trayectoId" ng-options="trayecto.id as trayecto.id for trayecto in vm.trayectos"             required>
+            <select class="form-control" id="field_id_trayecto" name="id_trayecto" ng-model="vm.coordenadaTrayecto.id_trayectoId" ng-options="trayecto.id as trayecto.id for trayecto in vm.trayectos"             required>
             </select>
         </div>
         <div ng-show="editForm.id_trayecto.$invalid">

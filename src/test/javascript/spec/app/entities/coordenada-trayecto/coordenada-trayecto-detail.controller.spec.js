@@ -2,9 +2,9 @@
 
 describe('Controller Tests', function() {
 
-    describe('Coordenada_trayecto Management Detail Controller', function() {
+    describe('CoordenadaTrayecto Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockCoordenada_trayecto, MockCoordenadas, MockTrayecto;
+        var MockEntity, MockPreviousState, MockCoordenadaTrayecto, MockCoordenadas, MockTrayecto;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -12,7 +12,7 @@ describe('Controller Tests', function() {
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
             MockPreviousState = jasmine.createSpy('MockPreviousState');
-            MockCoordenada_trayecto = jasmine.createSpy('MockCoordenada_trayecto');
+            MockCoordenadaTrayecto = jasmine.createSpy('MockCoordenadaTrayecto');
             MockCoordenadas = jasmine.createSpy('MockCoordenadas');
             MockTrayecto = jasmine.createSpy('MockTrayecto');
             
@@ -22,19 +22,19 @@ describe('Controller Tests', function() {
                 '$rootScope': $rootScope,
                 'entity': MockEntity,
                 'previousState': MockPreviousState,
-                'Coordenada_trayecto': MockCoordenada_trayecto,
+                'CoordenadaTrayecto': MockCoordenadaTrayecto,
                 'Coordenadas': MockCoordenadas,
                 'Trayecto': MockTrayecto
             };
             createController = function() {
-                $injector.get('$controller')("Coordenada_trayectoDetailController", locals);
+                $injector.get('$controller')("CoordenadaTrayectoDetailController", locals);
             };
         }));
 
 
         describe('Root Scope Listening', function() {
             it('Unregisters root scope listener upon scope destruction', function() {
-                var eventType = 'rallyApp:coordenada_trayectoUpdate';
+                var eventType = 'rallyApp:coordenadaTrayectoUpdate';
 
                 createController();
                 expect($rootScope.$$listenerCount[eventType]).toEqual(1);

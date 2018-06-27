@@ -3,14 +3,14 @@
 
     angular
         .module('rallyApp')
-        .controller('Etapa_pruebaDialogController', Etapa_pruebaDialogController);
+        .controller('EtapaPruebaDialogController', EtapaPruebaDialogController);
 
-    Etapa_pruebaDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Etapa_prueba', 'Etapa', 'Pruebas'];
+    EtapaPruebaDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'EtapaPrueba', 'Etapa', 'Pruebas'];
 
-    function Etapa_pruebaDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Etapa_prueba, Etapa, Pruebas) {
+    function EtapaPruebaDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, EtapaPrueba, Etapa, Pruebas) {
         var vm = this;
 
-        vm.etapa_prueba = entity;
+        vm.etapaPrueba = entity;
         vm.clear = clear;
         vm.save = save;
         vm.etapas = Etapa.query();
@@ -26,15 +26,15 @@
 
         function save () {
             vm.isSaving = true;
-            if (vm.etapa_prueba.id !== null) {
-                Etapa_prueba.update(vm.etapa_prueba, onSaveSuccess, onSaveError);
+            if (vm.etapaPrueba.id !== null) {
+                EtapaPrueba.update(vm.etapaPrueba, onSaveSuccess, onSaveError);
             } else {
-                Etapa_prueba.save(vm.etapa_prueba, onSaveSuccess, onSaveError);
+                EtapaPrueba.save(vm.etapaPrueba, onSaveSuccess, onSaveError);
             }
         }
 
         function onSaveSuccess (result) {
-            $scope.$emit('rallyApp:etapa_pruebaUpdate', result);
+            $scope.$emit('rallyApp:etapaPruebaUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }
