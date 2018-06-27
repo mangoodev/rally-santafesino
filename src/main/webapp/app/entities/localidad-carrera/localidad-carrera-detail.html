@@ -1,16 +1,16 @@
 
 <div>
-    <h2><span>Localidad Carrera</span> {{vm.localidad_carrera.id}}</h2>
+    <h2><span>Localidad Carrera</span> {{vm.localidadCarrera.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
         <dt><span>Id Carrera</span></dt>
         <dd>
-            <a ui-sref="carrera-detail({id:vm.localidad_carrera.id_carreraId})">{{vm.localidad_carrera.id_carreraId}}</a>
+            <a ui-sref="carrera-detail({id:vm.localidadCarrera.id_carreraId})">{{vm.localidadCarrera.id_carreraId}}</a>
         </dd>
         <dt><span>Id Localidad</span></dt>
         <dd>
-            <a ui-sref="localidad-detail({id:vm.localidad_carrera.id_localidadId})">{{vm.localidad_carrera.id_localidadId}}</a>
+            <a ui-sref="localidad-detail({id:vm.localidadCarrera.id_localidadId})">{{vm.localidadCarrera.id_localidadId}}</a>
         </dd>
     </dl>
 
@@ -20,7 +20,7 @@
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
 
-    <button type="button" ui-sref="localidad-carrera-detail.edit({id:vm.localidad_carrera.id})" class="btn btn-primary">
+    <button type="button" ui-sref="localidad-carrera-detail.edit({id:vm.localidadCarrera.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-sm-down"> Edit</span>
     </button>

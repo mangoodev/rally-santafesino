@@ -3,11 +3,11 @@
 
     angular
         .module('rallyApp')
-        .controller('Auto_carreraController', Auto_carreraController);
+        .controller('AutoCarreraController', AutoCarreraController);
 
-    Auto_carreraController.$inject = ['$state', 'Auto_carrera', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    AutoCarreraController.$inject = ['$state', 'AutoCarrera', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
-    function Auto_carreraController($state, Auto_carrera, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function AutoCarreraController($state, AutoCarrera, ParseLinks, AlertService, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -20,7 +20,7 @@
         loadAll();
 
         function loadAll () {
-            Auto_carrera.query({
+            AutoCarrera.query({
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort()
@@ -36,7 +36,7 @@
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
-                vm.auto_carreras = data;
+                vm.autoCarreras = data;
                 vm.page = pagingParams.page;
             }
             function onError(error) {

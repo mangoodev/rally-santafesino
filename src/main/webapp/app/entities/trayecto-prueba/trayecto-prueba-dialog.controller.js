@@ -3,14 +3,14 @@
 
     angular
         .module('rallyApp')
-        .controller('Trayecto_pruebaDialogController', Trayecto_pruebaDialogController);
+        .controller('TrayectoPruebaDialogController', TrayectoPruebaDialogController);
 
-    Trayecto_pruebaDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Trayecto_prueba', 'Pruebas', 'Trayecto'];
+    TrayectoPruebaDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'TrayectoPrueba', 'Pruebas', 'Trayecto'];
 
-    function Trayecto_pruebaDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Trayecto_prueba, Pruebas, Trayecto) {
+    function TrayectoPruebaDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, TrayectoPrueba, Pruebas, Trayecto) {
         var vm = this;
 
-        vm.trayecto_prueba = entity;
+        vm.trayectoPrueba = entity;
         vm.clear = clear;
         vm.save = save;
         vm.pruebas = Pruebas.query();
@@ -26,15 +26,15 @@
 
         function save () {
             vm.isSaving = true;
-            if (vm.trayecto_prueba.id !== null) {
-                Trayecto_prueba.update(vm.trayecto_prueba, onSaveSuccess, onSaveError);
+            if (vm.trayectoPrueba.id !== null) {
+                TrayectoPrueba.update(vm.trayectoPrueba, onSaveSuccess, onSaveError);
             } else {
-                Trayecto_prueba.save(vm.trayecto_prueba, onSaveSuccess, onSaveError);
+                TrayectoPrueba.save(vm.trayectoPrueba, onSaveSuccess, onSaveError);
             }
         }
 
         function onSaveSuccess (result) {
-            $scope.$emit('rallyApp:trayecto_pruebaUpdate', result);
+            $scope.$emit('rallyApp:trayectoPruebaUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }

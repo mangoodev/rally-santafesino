@@ -30,7 +30,7 @@ public class Tiempos implements Serializable {
 
     @OneToOne(mappedBy = "id_tiempos")
     @JsonIgnore
-    private Auto_tiempo_prueba auto_tiempo_prueba;
+    private AutoTiempoPrueba autoTiempoPrueba;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -54,17 +54,17 @@ public class Tiempos implements Serializable {
         this.parcial = parcial;
     }
 
-    public Auto_tiempo_prueba getAuto_tiempo_prueba() {
-        return auto_tiempo_prueba;
+    public AutoTiempoPrueba getAutoTiempoPrueba() {
+        return autoTiempoPrueba;
     }
 
-    public Tiempos auto_tiempo_prueba(Auto_tiempo_prueba auto_tiempo_prueba) {
-        this.auto_tiempo_prueba = auto_tiempo_prueba;
+    public Tiempos autoTiempoPrueba(AutoTiempoPrueba autoTiempoPrueba) {
+        this.autoTiempoPrueba = autoTiempoPrueba;
         return this;
     }
 
-    public void setAuto_tiempo_prueba(Auto_tiempo_prueba auto_tiempo_prueba) {
-        this.auto_tiempo_prueba = auto_tiempo_prueba;
+    public void setAutoTiempoPrueba(AutoTiempoPrueba autoTiempoPrueba) {
+        this.autoTiempoPrueba = autoTiempoPrueba;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

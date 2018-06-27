@@ -4,39 +4,19 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myAuto_carreraLabel">Create or edit a Auto Carrera</h4>
+        <h4 class="modal-title" id="myAutoCarreraLabel">Create or edit a Auto Carrera</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.auto_carrera.id">
+        <div class="form-group" ng-show="vm.autoCarrera.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.auto_carrera.id" readonly />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_creation_date">Creation Date</label>
-                <div class="input-group">
-                    <input id="field_creation_date" type="text" class="form-control" name="creation_date" datetime-picker="{{dateformat}}" ng-model="vm.auto_carrera.creation_date" is-open="vm.datePickerOpenStatus.creation_date"
-                    required/>
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('creation_date')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </div>
-            <div ng-show="editForm.creation_date.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.creation_date.$error.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                    ng-show="editForm.creation_date.$error.ZonedDateTimelocal">
-                    This field should be a date and time.
-                </p>
-            </div>
+                    ng-model="vm.autoCarrera.id" readonly />
         </div>
 
         <div class="form-group">
             <label for="field_auto">Auto</label>
-            <select class="form-control" id="field_auto" name="auto" ng-model="vm.auto_carrera.autoId" ng-options="auto.id as auto.id for auto in vm.autos"             required>
+            <select class="form-control" id="field_auto" name="auto" ng-model="vm.autoCarrera.autoId" ng-options="auto.id as auto.id for auto in vm.autos"             required>
             </select>
         </div>
         <div ng-show="editForm.auto.$invalid">
@@ -47,7 +27,7 @@
         </div>
         <div class="form-group">
             <label for="field_carrera">Carrera</label>
-            <select class="form-control" id="field_carrera" name="carrera" ng-model="vm.auto_carrera.carreraId" ng-options="carrera.id as carrera.id for carrera in vm.carreras"             required>
+            <select class="form-control" id="field_carrera" name="carrera" ng-model="vm.autoCarrera.carreraId" ng-options="carrera.id as carrera.id for carrera in vm.carreras"             required>
             </select>
         </div>
         <div ng-show="editForm.carrera.$invalid">

@@ -3,18 +3,18 @@
 
     angular
         .module('rallyApp')
-        .controller('Trayecto_pruebaDetailController', Trayecto_pruebaDetailController);
+        .controller('TrayectoPruebaDetailController', TrayectoPruebaDetailController);
 
-    Trayecto_pruebaDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Trayecto_prueba', 'Pruebas', 'Trayecto'];
+    TrayectoPruebaDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'TrayectoPrueba', 'Pruebas', 'Trayecto'];
 
-    function Trayecto_pruebaDetailController($scope, $rootScope, $stateParams, previousState, entity, Trayecto_prueba, Pruebas, Trayecto) {
+    function TrayectoPruebaDetailController($scope, $rootScope, $stateParams, previousState, entity, TrayectoPrueba, Pruebas, Trayecto) {
         var vm = this;
 
-        vm.trayecto_prueba = entity;
+        vm.trayectoPrueba = entity;
         vm.previousState = previousState.name;
 
-        var unsubscribe = $rootScope.$on('rallyApp:trayecto_pruebaUpdate', function(event, result) {
-            vm.trayecto_prueba = result;
+        var unsubscribe = $rootScope.$on('rallyApp:trayectoPruebaUpdate', function(event, result) {
+            vm.trayectoPrueba = result;
         });
         $scope.$on('$destroy', unsubscribe);
     }

@@ -12,7 +12,7 @@ import org.mapstruct.*;
 public interface TiemposMapper extends EntityMapper<TiemposDTO, Tiempos> {
 
 
-    @Mapping(target = "auto_tiempo_prueba", ignore = true)
+    @Mapping(target = "autoTiempoPrueba", ignore = true)
     Tiempos toEntity(TiemposDTO tiemposDTO);
 
     default Tiempos fromId(Long id) {

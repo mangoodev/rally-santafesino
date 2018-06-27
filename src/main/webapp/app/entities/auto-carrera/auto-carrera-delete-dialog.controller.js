@@ -3,14 +3,14 @@
 
     angular
         .module('rallyApp')
-        .controller('Auto_carreraDeleteController',Auto_carreraDeleteController);
+        .controller('AutoCarreraDeleteController',AutoCarreraDeleteController);
 
-    Auto_carreraDeleteController.$inject = ['$uibModalInstance', 'entity', 'Auto_carrera'];
+    AutoCarreraDeleteController.$inject = ['$uibModalInstance', 'entity', 'AutoCarrera'];
 
-    function Auto_carreraDeleteController($uibModalInstance, entity, Auto_carrera) {
+    function AutoCarreraDeleteController($uibModalInstance, entity, AutoCarrera) {
         var vm = this;
 
-        vm.auto_carrera = entity;
+        vm.autoCarrera = entity;
         vm.clear = clear;
         vm.confirmDelete = confirmDelete;
 
@@ -19,7 +19,7 @@
         }
 
         function confirmDelete (id) {
-            Auto_carrera.delete({id: id},
+            AutoCarrera.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);
                 });

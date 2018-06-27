@@ -3,14 +3,14 @@
 
     angular
         .module('rallyApp')
-        .controller('Localidad_carreraDeleteController',Localidad_carreraDeleteController);
+        .controller('LocalidadCarreraDeleteController',LocalidadCarreraDeleteController);
 
-    Localidad_carreraDeleteController.$inject = ['$uibModalInstance', 'entity', 'Localidad_carrera'];
+    LocalidadCarreraDeleteController.$inject = ['$uibModalInstance', 'entity', 'LocalidadCarrera'];
 
-    function Localidad_carreraDeleteController($uibModalInstance, entity, Localidad_carrera) {
+    function LocalidadCarreraDeleteController($uibModalInstance, entity, LocalidadCarrera) {
         var vm = this;
 
-        vm.localidad_carrera = entity;
+        vm.localidadCarrera = entity;
         vm.clear = clear;
         vm.confirmDelete = confirmDelete;
 
@@ -19,7 +19,7 @@
         }
 
         function confirmDelete (id) {
-            Localidad_carrera.delete({id: id},
+            LocalidadCarrera.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);
                 });

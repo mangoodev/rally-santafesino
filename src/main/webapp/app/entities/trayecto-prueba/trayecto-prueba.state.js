@@ -14,12 +14,12 @@
             url: '/trayecto-prueba?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Trayecto_pruebas'
+                pageTitle: 'TrayectoPruebas'
             },
             views: {
                 'content@': {
                     templateUrl: 'app/entities/trayecto-prueba/trayecto-pruebas.html',
-                    controller: 'Trayecto_pruebaController',
+                    controller: 'TrayectoPruebaController',
                     controllerAs: 'vm'
                 }
             },
@@ -51,18 +51,18 @@
             url: '/trayecto-prueba/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Trayecto_prueba'
+                pageTitle: 'TrayectoPrueba'
             },
             views: {
                 'content@': {
                     templateUrl: 'app/entities/trayecto-prueba/trayecto-prueba-detail.html',
-                    controller: 'Trayecto_pruebaDetailController',
+                    controller: 'TrayectoPruebaDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
-                entity: ['$stateParams', 'Trayecto_prueba', function($stateParams, Trayecto_prueba) {
-                    return Trayecto_prueba.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'TrayectoPrueba', function($stateParams, TrayectoPrueba) {
+                    return TrayectoPrueba.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
@@ -83,13 +83,13 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/trayecto-prueba/trayecto-prueba-dialog.html',
-                    controller: 'Trayecto_pruebaDialogController',
+                    controller: 'TrayectoPruebaDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Trayecto_prueba', function(Trayecto_prueba) {
-                            return Trayecto_prueba.get({id : $stateParams.id}).$promise;
+                        entity: ['TrayectoPrueba', function(TrayectoPrueba) {
+                            return TrayectoPrueba.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -108,7 +108,7 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/trayecto-prueba/trayecto-prueba-dialog.html',
-                    controller: 'Trayecto_pruebaDialogController',
+                    controller: 'TrayectoPruebaDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
@@ -135,13 +135,13 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/trayecto-prueba/trayecto-prueba-dialog.html',
-                    controller: 'Trayecto_pruebaDialogController',
+                    controller: 'TrayectoPruebaDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Trayecto_prueba', function(Trayecto_prueba) {
-                            return Trayecto_prueba.get({id : $stateParams.id}).$promise;
+                        entity: ['TrayectoPrueba', function(TrayectoPrueba) {
+                            return TrayectoPrueba.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -160,12 +160,12 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/trayecto-prueba/trayecto-prueba-delete-dialog.html',
-                    controller: 'Trayecto_pruebaDeleteController',
+                    controller: 'TrayectoPruebaDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Trayecto_prueba', function(Trayecto_prueba) {
-                            return Trayecto_prueba.get({id : $stateParams.id}).$promise;
+                        entity: ['TrayectoPrueba', function(TrayectoPrueba) {
+                            return TrayectoPrueba.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {

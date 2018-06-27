@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity AutoCarrera.
+    -->
+    <changeSet id="20180611135405-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="auto_id"
+                                 baseTableName="auto_carrera"
+                                 constraintName="fk_auto_carrera_auto_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="auto"/>
+
+        <addForeignKeyConstraint baseColumnNames="carrera_id"
+                                 baseTableName="auto_carrera"
+                                 constraintName="fk_auto_carrera_carrera_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="carrera"/>
+
+    </changeSet>
+</databaseChangeLog>

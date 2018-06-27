@@ -39,21 +39,21 @@ public class CacheConfiguration {
             cm.createCache(com.rally.santafesino.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.rally.santafesino.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(com.rally.santafesino.domain.Auto.class.getName(), jcacheConfiguration);
-            cm.createCache(com.rally.santafesino.domain.Persona.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rally.santafesino.domain.AutoCarrera.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rally.santafesino.domain.AutoTiempoPrueba.class.getName(), jcacheConfiguration);
             cm.createCache(com.rally.santafesino.domain.Carrera.class.getName(), jcacheConfiguration);
-            cm.createCache(com.rally.santafesino.domain.Auto_carrera.class.getName(), jcacheConfiguration);
-            cm.createCache(com.rally.santafesino.domain.Localidad.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rally.santafesino.domain.CarreraEtapa.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rally.santafesino.domain.Coordenadas.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rally.santafesino.domain.CoordenadaTrayecto.class.getName(), jcacheConfiguration);
             cm.createCache(com.rally.santafesino.domain.Etapa.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rally.santafesino.domain.EtapaPrueba.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rally.santafesino.domain.Localidad.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rally.santafesino.domain.LocalidadCarrera.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rally.santafesino.domain.Persona.class.getName(), jcacheConfiguration);
             cm.createCache(com.rally.santafesino.domain.Pruebas.class.getName(), jcacheConfiguration);
             cm.createCache(com.rally.santafesino.domain.Tiempos.class.getName(), jcacheConfiguration);
-            cm.createCache(com.rally.santafesino.domain.Auto_tiempo_prueba.class.getName(), jcacheConfiguration);
-            cm.createCache(com.rally.santafesino.domain.Carrera_etapa.class.getName(), jcacheConfiguration);
-            cm.createCache(com.rally.santafesino.domain.Etapa_prueba.class.getName(), jcacheConfiguration);
-            cm.createCache(com.rally.santafesino.domain.Localidad_carrera.class.getName(), jcacheConfiguration);
-            cm.createCache(com.rally.santafesino.domain.Coordenadas.class.getName(), jcacheConfiguration);
             cm.createCache(com.rally.santafesino.domain.Trayecto.class.getName(), jcacheConfiguration);
-            cm.createCache(com.rally.santafesino.domain.Coordenada_trayecto.class.getName(), jcacheConfiguration);
-            cm.createCache(com.rally.santafesino.domain.Trayecto_prueba.class.getName(), jcacheConfiguration);
+            cm.createCache(com.rally.santafesino.domain.TrayectoPrueba.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

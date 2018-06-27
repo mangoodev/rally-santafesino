@@ -19,38 +19,36 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="creation_date"><span>Creation Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="autoId"><span>Auto</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="carreraId"><span>Carrera</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="auto_carrera in vm.auto_carreras track by auto_carrera.id">
-                    <td><a ui-sref="auto-carrera-detail({id:auto_carrera.id})">{{auto_carrera.id}}</a></td>
-                    <td>{{auto_carrera.creation_date | date:'medium'}}</td>
+                <tr ng-repeat="autoCarrera in vm.autoCarreras track by autoCarrera.id">
+                    <td><a ui-sref="auto-carrera-detail({id:autoCarrera.id})">{{autoCarrera.id}}</a></td>
                     <td>
-                        <a ui-sref="auto-detail({id:auto_carrera.autoId})">{{auto_carrera.autoId}}</a>
+                        <a ui-sref="auto-detail({id:autoCarrera.autoId})">{{autoCarrera.autoId}}</a>
                     </td>
                     <td>
-                        <a ui-sref="carrera-detail({id:auto_carrera.carreraId})">{{auto_carrera.carreraId}}</a>
+                        <a ui-sref="carrera-detail({id:autoCarrera.carreraId})">{{autoCarrera.carreraId}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
-                                    ui-sref="auto-carrera-detail({id:auto_carrera.id})"
+                                    ui-sref="auto-carrera-detail({id:autoCarrera.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="auto-carrera.edit({id:auto_carrera.id})"
+                                    ui-sref="auto-carrera.edit({id:autoCarrera.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="auto-carrera.delete({id:auto_carrera.id})"
+                                    ui-sref="auto-carrera.delete({id:autoCarrera.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-sm-down"></span>

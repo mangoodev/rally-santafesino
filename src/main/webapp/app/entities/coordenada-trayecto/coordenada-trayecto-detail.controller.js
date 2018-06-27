@@ -3,18 +3,18 @@
 
     angular
         .module('rallyApp')
-        .controller('Coordenada_trayectoDetailController', Coordenada_trayectoDetailController);
+        .controller('CoordenadaTrayectoDetailController', CoordenadaTrayectoDetailController);
 
-    Coordenada_trayectoDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Coordenada_trayecto', 'Coordenadas', 'Trayecto'];
+    CoordenadaTrayectoDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'CoordenadaTrayecto', 'Coordenadas', 'Trayecto'];
 
-    function Coordenada_trayectoDetailController($scope, $rootScope, $stateParams, previousState, entity, Coordenada_trayecto, Coordenadas, Trayecto) {
+    function CoordenadaTrayectoDetailController($scope, $rootScope, $stateParams, previousState, entity, CoordenadaTrayecto, Coordenadas, Trayecto) {
         var vm = this;
 
-        vm.coordenada_trayecto = entity;
+        vm.coordenadaTrayecto = entity;
         vm.previousState = previousState.name;
 
-        var unsubscribe = $rootScope.$on('rallyApp:coordenada_trayectoUpdate', function(event, result) {
-            vm.coordenada_trayecto = result;
+        var unsubscribe = $rootScope.$on('rallyApp:coordenadaTrayectoUpdate', function(event, result) {
+            vm.coordenadaTrayecto = result;
         });
         $scope.$on('$destroy', unsubscribe);
     }

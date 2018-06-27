@@ -2,11 +2,11 @@
     'use strict';
     angular
         .module('rallyApp')
-        .factory('Trayecto_prueba', Trayecto_prueba);
+        .factory('TrayectoPrueba', TrayectoPrueba);
 
-    Trayecto_prueba.$inject = ['$resource'];
+    TrayectoPrueba.$inject = ['$resource'];
 
-    function Trayecto_prueba ($resource) {
+    function TrayectoPrueba ($resource) {
         var resourceUrl =  'api/trayecto-pruebas/:id';
 
         return $resource(resourceUrl, {}, {

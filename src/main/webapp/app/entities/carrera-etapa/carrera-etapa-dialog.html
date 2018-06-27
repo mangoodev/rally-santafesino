@@ -4,19 +4,19 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myCarrera_etapaLabel">Create or edit a Carrera Etapa</h4>
+        <h4 class="modal-title" id="myCarreraEtapaLabel">Create or edit a Carrera Etapa</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.carrera_etapa.id">
+        <div class="form-group" ng-show="vm.carreraEtapa.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.carrera_etapa.id" readonly />
+                    ng-model="vm.carreraEtapa.id" readonly />
         </div>
 
         <div class="form-group">
             <label for="field_id_carrera">Id Carrera</label>
-            <select class="form-control" id="field_id_carrera" name="id_carrera" ng-model="vm.carrera_etapa.id_carreraId" ng-options="carrera.id as carrera.id for carrera in vm.carreras"             required>
+            <select class="form-control" id="field_id_carrera" name="id_carrera" ng-model="vm.carreraEtapa.id_carreraId" ng-options="carrera.id as carrera.id for carrera in vm.carreras"             required>
             </select>
         </div>
         <div ng-show="editForm.id_carrera.$invalid">
@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
             <label for="field_id_etapa">Id Etapa</label>
-            <select class="form-control" id="field_id_etapa" name="id_etapa" ng-model="vm.carrera_etapa.id_etapaId" ng-options="etapa.id as etapa.id for etapa in vm.etapas"             required>
+            <select class="form-control" id="field_id_etapa" name="id_etapa" ng-model="vm.carreraEtapa.id_etapaId" ng-options="etapa.id as etapa.id for etapa in vm.etapas"             required>
             </select>
         </div>
         <div ng-show="editForm.id_etapa.$invalid">

@@ -1,16 +1,16 @@
 
 <div>
-    <h2><span>Trayecto Prueba</span> {{vm.trayecto_prueba.id}}</h2>
+    <h2><span>Trayecto Prueba</span> {{vm.trayectoPrueba.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
         <dt><span>Id Prueba</span></dt>
         <dd>
-            <a ui-sref="pruebas-detail({id:vm.trayecto_prueba.id_pruebaId})">{{vm.trayecto_prueba.id_pruebaId}}</a>
+            <a ui-sref="pruebas-detail({id:vm.trayectoPrueba.id_pruebaId})">{{vm.trayectoPrueba.id_pruebaId}}</a>
         </dd>
         <dt><span>Id Trayecto</span></dt>
         <dd>
-            <a ui-sref="trayecto-detail({id:vm.trayecto_prueba.id_trayectoId})">{{vm.trayecto_prueba.id_trayectoId}}</a>
+            <a ui-sref="trayecto-detail({id:vm.trayectoPrueba.id_trayectoId})">{{vm.trayectoPrueba.id_trayectoId}}</a>
         </dd>
     </dl>
 
@@ -20,7 +20,7 @@
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
 
-    <button type="button" ui-sref="trayecto-prueba-detail.edit({id:vm.trayecto_prueba.id})" class="btn btn-primary">
+    <button type="button" ui-sref="trayecto-prueba-detail.edit({id:vm.trayectoPrueba.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-sm-down"> Edit</span>
     </button>

@@ -14,12 +14,12 @@
             url: '/auto-tiempo-prueba?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Auto_tiempo_pruebas'
+                pageTitle: 'AutoTiempoPruebas'
             },
             views: {
                 'content@': {
                     templateUrl: 'app/entities/auto-tiempo-prueba/auto-tiempo-pruebas.html',
-                    controller: 'Auto_tiempo_pruebaController',
+                    controller: 'AutoTiempoPruebaController',
                     controllerAs: 'vm'
                 }
             },
@@ -51,18 +51,18 @@
             url: '/auto-tiempo-prueba/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Auto_tiempo_prueba'
+                pageTitle: 'AutoTiempoPrueba'
             },
             views: {
                 'content@': {
                     templateUrl: 'app/entities/auto-tiempo-prueba/auto-tiempo-prueba-detail.html',
-                    controller: 'Auto_tiempo_pruebaDetailController',
+                    controller: 'AutoTiempoPruebaDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
-                entity: ['$stateParams', 'Auto_tiempo_prueba', function($stateParams, Auto_tiempo_prueba) {
-                    return Auto_tiempo_prueba.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'AutoTiempoPrueba', function($stateParams, AutoTiempoPrueba) {
+                    return AutoTiempoPrueba.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
@@ -83,13 +83,13 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/auto-tiempo-prueba/auto-tiempo-prueba-dialog.html',
-                    controller: 'Auto_tiempo_pruebaDialogController',
+                    controller: 'AutoTiempoPruebaDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Auto_tiempo_prueba', function(Auto_tiempo_prueba) {
-                            return Auto_tiempo_prueba.get({id : $stateParams.id}).$promise;
+                        entity: ['AutoTiempoPrueba', function(AutoTiempoPrueba) {
+                            return AutoTiempoPrueba.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -108,7 +108,7 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/auto-tiempo-prueba/auto-tiempo-prueba-dialog.html',
-                    controller: 'Auto_tiempo_pruebaDialogController',
+                    controller: 'AutoTiempoPruebaDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
@@ -135,13 +135,13 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/auto-tiempo-prueba/auto-tiempo-prueba-dialog.html',
-                    controller: 'Auto_tiempo_pruebaDialogController',
+                    controller: 'AutoTiempoPruebaDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Auto_tiempo_prueba', function(Auto_tiempo_prueba) {
-                            return Auto_tiempo_prueba.get({id : $stateParams.id}).$promise;
+                        entity: ['AutoTiempoPrueba', function(AutoTiempoPrueba) {
+                            return AutoTiempoPrueba.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -160,12 +160,12 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/auto-tiempo-prueba/auto-tiempo-prueba-delete-dialog.html',
-                    controller: 'Auto_tiempo_pruebaDeleteController',
+                    controller: 'AutoTiempoPruebaDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Auto_tiempo_prueba', function(Auto_tiempo_prueba) {
-                            return Auto_tiempo_prueba.get({id : $stateParams.id}).$promise;
+                        entity: ['AutoTiempoPrueba', function(AutoTiempoPrueba) {
+                            return AutoTiempoPrueba.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {

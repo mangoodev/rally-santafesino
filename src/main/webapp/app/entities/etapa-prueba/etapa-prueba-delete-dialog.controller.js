@@ -3,14 +3,14 @@
 
     angular
         .module('rallyApp')
-        .controller('Etapa_pruebaDeleteController',Etapa_pruebaDeleteController);
+        .controller('EtapaPruebaDeleteController',EtapaPruebaDeleteController);
 
-    Etapa_pruebaDeleteController.$inject = ['$uibModalInstance', 'entity', 'Etapa_prueba'];
+    EtapaPruebaDeleteController.$inject = ['$uibModalInstance', 'entity', 'EtapaPrueba'];
 
-    function Etapa_pruebaDeleteController($uibModalInstance, entity, Etapa_prueba) {
+    function EtapaPruebaDeleteController($uibModalInstance, entity, EtapaPrueba) {
         var vm = this;
 
-        vm.etapa_prueba = entity;
+        vm.etapaPrueba = entity;
         vm.clear = clear;
         vm.confirmDelete = confirmDelete;
 
@@ -19,7 +19,7 @@
         }
 
         function confirmDelete (id) {
-            Etapa_prueba.delete({id: id},
+            EtapaPrueba.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);
                 });

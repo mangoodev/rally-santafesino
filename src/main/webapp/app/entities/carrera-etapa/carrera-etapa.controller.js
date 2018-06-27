@@ -3,11 +3,11 @@
 
     angular
         .module('rallyApp')
-        .controller('Carrera_etapaController', Carrera_etapaController);
+        .controller('CarreraEtapaController', CarreraEtapaController);
 
-    Carrera_etapaController.$inject = ['$state', 'Carrera_etapa', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    CarreraEtapaController.$inject = ['$state', 'CarreraEtapa', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
-    function Carrera_etapaController($state, Carrera_etapa, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function CarreraEtapaController($state, CarreraEtapa, ParseLinks, AlertService, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -20,7 +20,7 @@
         loadAll();
 
         function loadAll () {
-            Carrera_etapa.query({
+            CarreraEtapa.query({
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort()
@@ -36,7 +36,7 @@
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
-                vm.carrera_etapas = data;
+                vm.carreraEtapas = data;
                 vm.page = pagingParams.page;
             }
             function onError(error) {

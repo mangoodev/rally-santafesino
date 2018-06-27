@@ -3,14 +3,14 @@
 
     angular
         .module('rallyApp')
-        .controller('Coordenada_trayectoDialogController', Coordenada_trayectoDialogController);
+        .controller('CoordenadaTrayectoDialogController', CoordenadaTrayectoDialogController);
 
-    Coordenada_trayectoDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Coordenada_trayecto', 'Coordenadas', 'Trayecto'];
+    CoordenadaTrayectoDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'CoordenadaTrayecto', 'Coordenadas', 'Trayecto'];
 
-    function Coordenada_trayectoDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Coordenada_trayecto, Coordenadas, Trayecto) {
+    function CoordenadaTrayectoDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, CoordenadaTrayecto, Coordenadas, Trayecto) {
         var vm = this;
 
-        vm.coordenada_trayecto = entity;
+        vm.coordenadaTrayecto = entity;
         vm.clear = clear;
         vm.save = save;
         vm.coordenadas = Coordenadas.query();
@@ -26,15 +26,15 @@
 
         function save () {
             vm.isSaving = true;
-            if (vm.coordenada_trayecto.id !== null) {
-                Coordenada_trayecto.update(vm.coordenada_trayecto, onSaveSuccess, onSaveError);
+            if (vm.coordenadaTrayecto.id !== null) {
+                CoordenadaTrayecto.update(vm.coordenadaTrayecto, onSaveSuccess, onSaveError);
             } else {
-                Coordenada_trayecto.save(vm.coordenada_trayecto, onSaveSuccess, onSaveError);
+                CoordenadaTrayecto.save(vm.coordenadaTrayecto, onSaveSuccess, onSaveError);
             }
         }
 
         function onSaveSuccess (result) {
-            $scope.$emit('rallyApp:coordenada_trayectoUpdate', result);
+            $scope.$emit('rallyApp:coordenadaTrayectoUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }

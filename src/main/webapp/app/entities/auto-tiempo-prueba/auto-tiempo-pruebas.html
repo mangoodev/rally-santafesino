@@ -26,33 +26,33 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="auto_tiempo_prueba in vm.auto_tiempo_pruebas track by auto_tiempo_prueba.id">
-                    <td><a ui-sref="auto-tiempo-prueba-detail({id:auto_tiempo_prueba.id})">{{auto_tiempo_prueba.id}}</a></td>
+                <tr ng-repeat="autoTiempoPrueba in vm.autoTiempoPruebas track by autoTiempoPrueba.id">
+                    <td><a ui-sref="auto-tiempo-prueba-detail({id:autoTiempoPrueba.id})">{{autoTiempoPrueba.id}}</a></td>
                     <td>
-                        <a ui-sref="auto-detail({id:auto_tiempo_prueba.id_autoId})">{{auto_tiempo_prueba.id_autoId}}</a>
+                        <a ui-sref="auto-detail({id:autoTiempoPrueba.id_autoId})">{{autoTiempoPrueba.id_autoId}}</a>
                     </td>
                     <td>
-                        <a ui-sref="tiempos-detail({id:auto_tiempo_prueba.id_tiemposId})">{{auto_tiempo_prueba.id_tiemposId}}</a>
+                        <a ui-sref="tiempos-detail({id:autoTiempoPrueba.id_tiemposId})">{{autoTiempoPrueba.id_tiemposId}}</a>
                     </td>
                     <td>
-                        <a ui-sref="pruebas-detail({id:auto_tiempo_prueba.id_pruebaId})">{{auto_tiempo_prueba.id_pruebaId}}</a>
+                        <a ui-sref="pruebas-detail({id:autoTiempoPrueba.id_pruebaId})">{{autoTiempoPrueba.id_pruebaId}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
-                                    ui-sref="auto-tiempo-prueba-detail({id:auto_tiempo_prueba.id})"
+                                    ui-sref="auto-tiempo-prueba-detail({id:autoTiempoPrueba.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="auto-tiempo-prueba.edit({id:auto_tiempo_prueba.id})"
+                                    ui-sref="auto-tiempo-prueba.edit({id:autoTiempoPrueba.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="auto-tiempo-prueba.delete({id:auto_tiempo_prueba.id})"
+                                    ui-sref="auto-tiempo-prueba.delete({id:autoTiempoPrueba.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-sm-down"></span>

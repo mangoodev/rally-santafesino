@@ -14,12 +14,12 @@
             url: '/localidad-carrera?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Localidad_carreras'
+                pageTitle: 'LocalidadCarreras'
             },
             views: {
                 'content@': {
                     templateUrl: 'app/entities/localidad-carrera/localidad-carreras.html',
-                    controller: 'Localidad_carreraController',
+                    controller: 'LocalidadCarreraController',
                     controllerAs: 'vm'
                 }
             },
@@ -51,18 +51,18 @@
             url: '/localidad-carrera/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Localidad_carrera'
+                pageTitle: 'LocalidadCarrera'
             },
             views: {
                 'content@': {
                     templateUrl: 'app/entities/localidad-carrera/localidad-carrera-detail.html',
-                    controller: 'Localidad_carreraDetailController',
+                    controller: 'LocalidadCarreraDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
-                entity: ['$stateParams', 'Localidad_carrera', function($stateParams, Localidad_carrera) {
-                    return Localidad_carrera.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'LocalidadCarrera', function($stateParams, LocalidadCarrera) {
+                    return LocalidadCarrera.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
@@ -83,13 +83,13 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/localidad-carrera/localidad-carrera-dialog.html',
-                    controller: 'Localidad_carreraDialogController',
+                    controller: 'LocalidadCarreraDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Localidad_carrera', function(Localidad_carrera) {
-                            return Localidad_carrera.get({id : $stateParams.id}).$promise;
+                        entity: ['LocalidadCarrera', function(LocalidadCarrera) {
+                            return LocalidadCarrera.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -108,7 +108,7 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/localidad-carrera/localidad-carrera-dialog.html',
-                    controller: 'Localidad_carreraDialogController',
+                    controller: 'LocalidadCarreraDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
@@ -135,13 +135,13 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/localidad-carrera/localidad-carrera-dialog.html',
-                    controller: 'Localidad_carreraDialogController',
+                    controller: 'LocalidadCarreraDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Localidad_carrera', function(Localidad_carrera) {
-                            return Localidad_carrera.get({id : $stateParams.id}).$promise;
+                        entity: ['LocalidadCarrera', function(LocalidadCarrera) {
+                            return LocalidadCarrera.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -160,12 +160,12 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/localidad-carrera/localidad-carrera-delete-dialog.html',
-                    controller: 'Localidad_carreraDeleteController',
+                    controller: 'LocalidadCarreraDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Localidad_carrera', function(Localidad_carrera) {
-                            return Localidad_carrera.get({id : $stateParams.id}).$promise;
+                        entity: ['LocalidadCarrera', function(LocalidadCarrera) {
+                            return LocalidadCarrera.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {

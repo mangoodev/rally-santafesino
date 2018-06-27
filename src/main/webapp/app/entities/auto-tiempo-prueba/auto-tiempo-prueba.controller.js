@@ -3,11 +3,11 @@
 
     angular
         .module('rallyApp')
-        .controller('Auto_tiempo_pruebaController', Auto_tiempo_pruebaController);
+        .controller('AutoTiempoPruebaController', AutoTiempoPruebaController);
 
-    Auto_tiempo_pruebaController.$inject = ['$state', 'Auto_tiempo_prueba', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    AutoTiempoPruebaController.$inject = ['$state', 'AutoTiempoPrueba', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
-    function Auto_tiempo_pruebaController($state, Auto_tiempo_prueba, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function AutoTiempoPruebaController($state, AutoTiempoPrueba, ParseLinks, AlertService, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -20,7 +20,7 @@
         loadAll();
 
         function loadAll () {
-            Auto_tiempo_prueba.query({
+            AutoTiempoPrueba.query({
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort()
@@ -36,7 +36,7 @@
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
-                vm.auto_tiempo_pruebas = data;
+                vm.autoTiempoPruebas = data;
                 vm.page = pagingParams.page;
             }
             function onError(error) {

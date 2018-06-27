@@ -25,30 +25,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="etapa_prueba in vm.etapa_pruebas track by etapa_prueba.id">
-                    <td><a ui-sref="etapa-prueba-detail({id:etapa_prueba.id})">{{etapa_prueba.id}}</a></td>
+                <tr ng-repeat="etapaPrueba in vm.etapaPruebas track by etapaPrueba.id">
+                    <td><a ui-sref="etapa-prueba-detail({id:etapaPrueba.id})">{{etapaPrueba.id}}</a></td>
                     <td>
-                        <a ui-sref="etapa-detail({id:etapa_prueba.id_etapaId})">{{etapa_prueba.id_etapaId}}</a>
+                        <a ui-sref="etapa-detail({id:etapaPrueba.id_etapaId})">{{etapaPrueba.id_etapaId}}</a>
                     </td>
                     <td>
-                        <a ui-sref="pruebas-detail({id:etapa_prueba.id_pruebaId})">{{etapa_prueba.id_pruebaId}}</a>
+                        <a ui-sref="pruebas-detail({id:etapaPrueba.id_pruebaId})">{{etapaPrueba.id_pruebaId}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
-                                    ui-sref="etapa-prueba-detail({id:etapa_prueba.id})"
+                                    ui-sref="etapa-prueba-detail({id:etapaPrueba.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="etapa-prueba.edit({id:etapa_prueba.id})"
+                                    ui-sref="etapa-prueba.edit({id:etapaPrueba.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="etapa-prueba.delete({id:etapa_prueba.id})"
+                                    ui-sref="etapa-prueba.delete({id:etapaPrueba.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-sm-down"></span>

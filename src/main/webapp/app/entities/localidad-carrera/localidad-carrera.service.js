@@ -2,11 +2,11 @@
     'use strict';
     angular
         .module('rallyApp')
-        .factory('Localidad_carrera', Localidad_carrera);
+        .factory('LocalidadCarrera', LocalidadCarrera);
 
-    Localidad_carrera.$inject = ['$resource'];
+    LocalidadCarrera.$inject = ['$resource'];
 
-    function Localidad_carrera ($resource) {
+    function LocalidadCarrera ($resource) {
         var resourceUrl =  'api/localidad-carreras/:id';
 
         return $resource(resourceUrl, {}, {

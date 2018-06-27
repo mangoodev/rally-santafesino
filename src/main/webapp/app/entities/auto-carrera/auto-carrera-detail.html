@@ -1,20 +1,16 @@
 
 <div>
-    <h2><span>Auto Carrera</span> {{vm.auto_carrera.id}}</h2>
+    <h2><span>Auto Carrera</span> {{vm.autoCarrera.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
-        <dt><span>Creation Date</span></dt>
-        <dd>
-            <span>{{vm.auto_carrera.creation_date | date:'medium'}}</span>
-        </dd>
         <dt><span>Auto</span></dt>
         <dd>
-            <a ui-sref="auto-detail({id:vm.auto_carrera.autoId})">{{vm.auto_carrera.autoId}}</a>
+            <a ui-sref="auto-detail({id:vm.autoCarrera.autoId})">{{vm.autoCarrera.autoId}}</a>
         </dd>
         <dt><span>Carrera</span></dt>
         <dd>
-            <a ui-sref="carrera-detail({id:vm.auto_carrera.carreraId})">{{vm.auto_carrera.carreraId}}</a>
+            <a ui-sref="carrera-detail({id:vm.autoCarrera.carreraId})">{{vm.autoCarrera.carreraId}}</a>
         </dd>
     </dl>
 
@@ -24,7 +20,7 @@
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
 
-    <button type="button" ui-sref="auto-carrera-detail.edit({id:vm.auto_carrera.id})" class="btn btn-primary">
+    <button type="button" ui-sref="auto-carrera-detail.edit({id:vm.autoCarrera.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-sm-down"> Edit</span>
     </button>

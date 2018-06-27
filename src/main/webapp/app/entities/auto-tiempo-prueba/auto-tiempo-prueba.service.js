@@ -2,11 +2,11 @@
     'use strict';
     angular
         .module('rallyApp')
-        .factory('Auto_tiempo_prueba', Auto_tiempo_prueba);
+        .factory('AutoTiempoPrueba', AutoTiempoPrueba);
 
-    Auto_tiempo_prueba.$inject = ['$resource'];
+    AutoTiempoPrueba.$inject = ['$resource'];
 
-    function Auto_tiempo_prueba ($resource) {
+    function AutoTiempoPrueba ($resource) {
         var resourceUrl =  'api/auto-tiempo-pruebas/:id';
 
         return $resource(resourceUrl, {}, {

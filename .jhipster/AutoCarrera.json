@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "auto",
+            "otherEntityName": "auto",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "carrera",
+            "otherEntityName": "carrera",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20180611135405",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "auto_carrera",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

@@ -5,9 +5,9 @@
         .module('rallyApp')
         .controller('TiemposDetailController', TiemposDetailController);
 
-    TiemposDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Tiempos', 'Auto_tiempo_prueba'];
+    TiemposDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Tiempos', 'AutoTiempoPrueba'];
 
-    function TiemposDetailController($scope, $rootScope, $stateParams, previousState, entity, Tiempos, Auto_tiempo_prueba) {
+    function TiemposDetailController($scope, $rootScope, $stateParams, previousState, entity, Tiempos, AutoTiempoPrueba) {
         var vm = this;
 
         vm.tiempos = entity;

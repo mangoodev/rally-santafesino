@@ -3,14 +3,14 @@
 
     angular
         .module('rallyApp')
-        .controller('Localidad_carreraDialogController', Localidad_carreraDialogController);
+        .controller('LocalidadCarreraDialogController', LocalidadCarreraDialogController);
 
-    Localidad_carreraDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Localidad_carrera', 'Carrera', 'Localidad'];
+    LocalidadCarreraDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'LocalidadCarrera', 'Carrera', 'Localidad'];
 
-    function Localidad_carreraDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Localidad_carrera, Carrera, Localidad) {
+    function LocalidadCarreraDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, LocalidadCarrera, Carrera, Localidad) {
         var vm = this;
 
-        vm.localidad_carrera = entity;
+        vm.localidadCarrera = entity;
         vm.clear = clear;
         vm.save = save;
         vm.carreras = Carrera.query();
@@ -26,15 +26,15 @@
 
         function save () {
             vm.isSaving = true;
-            if (vm.localidad_carrera.id !== null) {
-                Localidad_carrera.update(vm.localidad_carrera, onSaveSuccess, onSaveError);
+            if (vm.localidadCarrera.id !== null) {
+                LocalidadCarrera.update(vm.localidadCarrera, onSaveSuccess, onSaveError);
             } else {
-                Localidad_carrera.save(vm.localidad_carrera, onSaveSuccess, onSaveError);
+                LocalidadCarrera.save(vm.localidadCarrera, onSaveSuccess, onSaveError);
             }
         }
 
         function onSaveSuccess (result) {
-            $scope.$emit('rallyApp:localidad_carreraUpdate', result);
+            $scope.$emit('rallyApp:localidadCarreraUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }

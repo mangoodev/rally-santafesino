@@ -25,30 +25,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="localidad_carrera in vm.localidad_carreras track by localidad_carrera.id">
-                    <td><a ui-sref="localidad-carrera-detail({id:localidad_carrera.id})">{{localidad_carrera.id}}</a></td>
+                <tr ng-repeat="localidadCarrera in vm.localidadCarreras track by localidadCarrera.id">
+                    <td><a ui-sref="localidad-carrera-detail({id:localidadCarrera.id})">{{localidadCarrera.id}}</a></td>
                     <td>
-                        <a ui-sref="carrera-detail({id:localidad_carrera.id_carreraId})">{{localidad_carrera.id_carreraId}}</a>
+                        <a ui-sref="carrera-detail({id:localidadCarrera.id_carreraId})">{{localidadCarrera.id_carreraId}}</a>
                     </td>
                     <td>
-                        <a ui-sref="localidad-detail({id:localidad_carrera.id_localidadId})">{{localidad_carrera.id_localidadId}}</a>
+                        <a ui-sref="localidad-detail({id:localidadCarrera.id_localidadId})">{{localidadCarrera.id_localidadId}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
-                                    ui-sref="localidad-carrera-detail({id:localidad_carrera.id})"
+                                    ui-sref="localidad-carrera-detail({id:localidadCarrera.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="localidad-carrera.edit({id:localidad_carrera.id})"
+                                    ui-sref="localidad-carrera.edit({id:localidadCarrera.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="localidad-carrera.delete({id:localidad_carrera.id})"
+                                    ui-sref="localidad-carrera.delete({id:localidadCarrera.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-sm-down"></span>

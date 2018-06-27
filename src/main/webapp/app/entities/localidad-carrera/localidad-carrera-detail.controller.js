@@ -3,18 +3,18 @@
 
     angular
         .module('rallyApp')
-        .controller('Localidad_carreraDetailController', Localidad_carreraDetailController);
+        .controller('LocalidadCarreraDetailController', LocalidadCarreraDetailController);
 
-    Localidad_carreraDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Localidad_carrera', 'Carrera', 'Localidad'];
+    LocalidadCarreraDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'LocalidadCarrera', 'Carrera', 'Localidad'];
 
-    function Localidad_carreraDetailController($scope, $rootScope, $stateParams, previousState, entity, Localidad_carrera, Carrera, Localidad) {
+    function LocalidadCarreraDetailController($scope, $rootScope, $stateParams, previousState, entity, LocalidadCarrera, Carrera, Localidad) {
         var vm = this;
 
-        vm.localidad_carrera = entity;
+        vm.localidadCarrera = entity;
         vm.previousState = previousState.name;
 
-        var unsubscribe = $rootScope.$on('rallyApp:localidad_carreraUpdate', function(event, result) {
-            vm.localidad_carrera = result;
+        var unsubscribe = $rootScope.$on('rallyApp:localidadCarreraUpdate', function(event, result) {
+            vm.localidadCarrera = result;
         });
         $scope.$on('$destroy', unsubscribe);
     }

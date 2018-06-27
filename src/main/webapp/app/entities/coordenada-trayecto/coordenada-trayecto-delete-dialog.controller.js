@@ -3,14 +3,14 @@
 
     angular
         .module('rallyApp')
-        .controller('Coordenada_trayectoDeleteController',Coordenada_trayectoDeleteController);
+        .controller('CoordenadaTrayectoDeleteController',CoordenadaTrayectoDeleteController);
 
-    Coordenada_trayectoDeleteController.$inject = ['$uibModalInstance', 'entity', 'Coordenada_trayecto'];
+    CoordenadaTrayectoDeleteController.$inject = ['$uibModalInstance', 'entity', 'CoordenadaTrayecto'];
 
-    function Coordenada_trayectoDeleteController($uibModalInstance, entity, Coordenada_trayecto) {
+    function CoordenadaTrayectoDeleteController($uibModalInstance, entity, CoordenadaTrayecto) {
         var vm = this;
 
-        vm.coordenada_trayecto = entity;
+        vm.coordenadaTrayecto = entity;
         vm.clear = clear;
         vm.confirmDelete = confirmDelete;
 
@@ -19,7 +19,7 @@
         }
 
         function confirmDelete (id) {
-            Coordenada_trayecto.delete({id: id},
+            CoordenadaTrayecto.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);
                 });

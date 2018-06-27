@@ -3,11 +3,11 @@
 
     angular
         .module('rallyApp')
-        .controller('Localidad_carreraController', Localidad_carreraController);
+        .controller('LocalidadCarreraController', LocalidadCarreraController);
 
-    Localidad_carreraController.$inject = ['$state', 'Localidad_carrera', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    LocalidadCarreraController.$inject = ['$state', 'LocalidadCarrera', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
-    function Localidad_carreraController($state, Localidad_carrera, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function LocalidadCarreraController($state, LocalidadCarrera, ParseLinks, AlertService, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -20,7 +20,7 @@
         loadAll();
 
         function loadAll () {
-            Localidad_carrera.query({
+            LocalidadCarrera.query({
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort()
@@ -36,7 +36,7 @@
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
-                vm.localidad_carreras = data;
+                vm.localidadCarreras = data;
                 vm.page = pagingParams.page;
             }
             function onError(error) {

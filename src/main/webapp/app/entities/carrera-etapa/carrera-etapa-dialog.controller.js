@@ -3,14 +3,14 @@
 
     angular
         .module('rallyApp')
-        .controller('Carrera_etapaDialogController', Carrera_etapaDialogController);
+        .controller('CarreraEtapaDialogController', CarreraEtapaDialogController);
 
-    Carrera_etapaDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Carrera_etapa', 'Carrera', 'Etapa'];
+    CarreraEtapaDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'CarreraEtapa', 'Carrera', 'Etapa'];
 
-    function Carrera_etapaDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Carrera_etapa, Carrera, Etapa) {
+    function CarreraEtapaDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, CarreraEtapa, Carrera, Etapa) {
         var vm = this;
 
-        vm.carrera_etapa = entity;
+        vm.carreraEtapa = entity;
         vm.clear = clear;
         vm.save = save;
         vm.carreras = Carrera.query();
@@ -26,15 +26,15 @@
 
         function save () {
             vm.isSaving = true;
-            if (vm.carrera_etapa.id !== null) {
-                Carrera_etapa.update(vm.carrera_etapa, onSaveSuccess, onSaveError);
+            if (vm.carreraEtapa.id !== null) {
+                CarreraEtapa.update(vm.carreraEtapa, onSaveSuccess, onSaveError);
             } else {
-                Carrera_etapa.save(vm.carrera_etapa, onSaveSuccess, onSaveError);
+                CarreraEtapa.save(vm.carreraEtapa, onSaveSuccess, onSaveError);
             }
         }
 
         function onSaveSuccess (result) {
-            $scope.$emit('rallyApp:carrera_etapaUpdate', result);
+            $scope.$emit('rallyApp:carreraEtapaUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }

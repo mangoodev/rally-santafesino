@@ -4,19 +4,19 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myTrayecto_pruebaLabel">Create or edit a Trayecto Prueba</h4>
+        <h4 class="modal-title" id="myTrayectoPruebaLabel">Create or edit a Trayecto Prueba</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.trayecto_prueba.id">
+        <div class="form-group" ng-show="vm.trayectoPrueba.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.trayecto_prueba.id" readonly />
+                    ng-model="vm.trayectoPrueba.id" readonly />
         </div>
 
         <div class="form-group">
             <label for="field_id_prueba">Id Prueba</label>
-            <select class="form-control" id="field_id_prueba" name="id_prueba" ng-model="vm.trayecto_prueba.id_pruebaId" ng-options="pruebas.id as pruebas.id for pruebas in vm.pruebas"             required>
+            <select class="form-control" id="field_id_prueba" name="id_prueba" ng-model="vm.trayectoPrueba.id_pruebaId" ng-options="pruebas.id as pruebas.id for pruebas in vm.pruebas"             required>
             </select>
         </div>
         <div ng-show="editForm.id_prueba.$invalid">
@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
             <label for="field_id_trayecto">Id Trayecto</label>
-            <select class="form-control" id="field_id_trayecto" name="id_trayecto" ng-model="vm.trayecto_prueba.id_trayectoId" ng-options="trayecto.id as trayecto.id for trayecto in vm.trayectos"             required>
+            <select class="form-control" id="field_id_trayecto" name="id_trayecto" ng-model="vm.trayectoPrueba.id_trayectoId" ng-options="trayecto.id as trayecto.id for trayecto in vm.trayectos"             required>
             </select>
         </div>
         <div ng-show="editForm.id_trayecto.$invalid">
