@@ -1,8 +1,11 @@
 package com.rally.santafesino.service;
 
+import com.rally.santafesino.domain.AutoCarrera;
 import com.rally.santafesino.domain.Carrera;
+import com.rally.santafesino.repository.AutoCarreraRepository;
 import com.rally.santafesino.repository.CarreraRepository;
 import com.rally.santafesino.service.dto.CarreraDTO;
+import com.rally.santafesino.service.mapper.AutoMapper;
 import com.rally.santafesino.service.mapper.CarreraMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.ZonedDateTime;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +24,8 @@ import java.util.stream.Collectors;
 /**
  * Service Implementation for managing Carrera.
  */
+
+
 @Service
 @Transactional
 public class CarreraService {
@@ -33,11 +40,17 @@ public class CarreraService {
 
     private final CarreraClaseService carreraClaseService;
 
-    public CarreraService(CarreraRepository carreraRepository, CarreraMapper carreraMapper, AutoService autoService, CarreraClaseService carreraClaseService) {
+    private final AutoMapper autoMapper;
+
+    private final AutoCarreraRepository autoCarreraRepository;
+
+    public CarreraService(CarreraRepository carreraRepository, CarreraMapper carreraMapper, AutoService autoService, CarreraClaseService carreraClaseService, AutoCarreraRepository autoCarreraRepository, AutoMapper autoMapper) {
         this.carreraRepository = carreraRepository;
         this.carreraMapper = carreraMapper;
         this.autoService = autoService;
         this.carreraClaseService = carreraClaseService;
+        this.autoCarreraRepository = autoCarreraRepository;
+        this.autoMapper = autoMapper;
     }
 
     /**
@@ -64,6 +77,13 @@ public class CarreraService {
         log.debug("Request to get all Carreras");
         return carreraRepository.findAll(pageable)
             .map(carreraMapper::toDto);
+    }
+
+    @Transactional(readOnly = true)
+    public List<CarreraDTO> findAll() {
+        log.debug("Request to get all Carreras");
+        List<CarreraDTO> carreraDTOs = carreraMapper.toDto(carreraRepository.findAll());
+        return carreraDTOs;
     }
 
     /**
@@ -95,5 +115,26 @@ public class CarreraService {
             .filter((carreraDTO) -> carreraDTO.getInicioInscripcion().isBefore(fechaActual))
             .filter((carreraDTO) -> carreraDTO.getFinalInscripcion().isAfter(fechaActual))
             .collect(Collectors.toList());
+    }
+
+    public List<CarreraDTO> getCarreraByFecha(ZonedDateTime fecha) {
+        ZonedDateTime comienzoDia = fecha.truncatedTo(ChronoUnit.DAYS);
+        ZonedDateTime finalDia = comienzoDia.plus(Duration.ofDays(1));
+        List<CarreraDTO> carreraDTOs;
+        List<Carrera> carreras = carreraRepository.findByFechaAfterAndFechaBeforeOrderByFechaAsc(comienzoDia,finalDia);
+        carreraDTOs = carreraMapper.toDto(carreras);
+        return carreraDTOs;
+    }
+
+    public CarreraDTO findCarreraWithAutoById(Long id) {
+        Carrera carrera = carreraRepository.findOne(id);
+        return toCarreraDtoWithAutos(carrera);
+    }
+
+    private CarreraDTO toCarreraDtoWithAutos(Carrera carrera) {
+        CarreraDTO carreraDto = carreraMapper.toDto(carrera);
+        List<AutoCarrera> autoCarreras = autoCarreraRepository.findAllByCarrera_Id(carrera.getId());
+        carreraDto.setAutos(autoCarreras.stream().map(AutoCarrera::getAuto).map(autoMapper::toDto).collect(Collectors.toList()));
+        return carreraDto;
     }
 }

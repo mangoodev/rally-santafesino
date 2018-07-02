@@ -15,4 +15,6 @@ import java.util.List;
 @Repository
 public interface AutoCarreraRepository extends JpaRepository<AutoCarrera, Long> {
     List<AutoCarrera> findAutoCarreraByAuto_Id(Long autoId);
+
+    List<AutoCarrera> findAllByCarrera_Id(Long id);
 }

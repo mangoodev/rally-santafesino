@@ -4,6 +4,7 @@ package com.rally.santafesino.service.dto;
 import java.time.ZonedDateTime;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -27,6 +28,8 @@ public class CarreraDTO implements Serializable {
     private ZonedDateTime inicioInscripcion;
 
     private ZonedDateTime finalInscripcion;
+
+    private List<AutoDTO> autos;
 
     public Long getId() {
         return id;
@@ -116,5 +119,13 @@ public class CarreraDTO implements Serializable {
             ", inicioInscripcion='" + getInicioInscripcion() + "'" +
             ", finalInscripcion='" + getFinalInscripcion() + "'" +
             "}";
+    }
+
+    public List<AutoDTO> getAutos() {
+        return autos;
+    }
+
+    public void setAutos(List<AutoDTO> autos) {
+        this.autos = autos;
     }
 }

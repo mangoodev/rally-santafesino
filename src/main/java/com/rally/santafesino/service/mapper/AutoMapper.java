@@ -13,6 +13,8 @@ public interface AutoMapper extends EntityMapper<AutoDTO, Auto> {
 
     @Mapping(source = "copiloto.id", target = "copilotoId")
     @Mapping(source = "piloto.id", target = "pilotoId")
+    @Mapping(source = "piloto.nombre", target = "pilotoNombre")
+    @Mapping(source = "copiloto.nombre", target = "copilotoNombre")
     AutoDTO toDto(Auto auto);
 
     @Mapping(source = "copilotoId", target = "copiloto")

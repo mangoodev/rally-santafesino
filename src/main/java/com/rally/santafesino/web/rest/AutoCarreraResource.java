@@ -124,4 +124,5 @@ public class AutoCarreraResource {
         autoCarreraService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
 }

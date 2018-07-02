@@ -94,4 +94,9 @@ public class AutoCarreraService {
             .map(carreraMapper::toDto)
             .collect(Collectors.toList());
     }
+
+    public List<AutoCarreraDTO> getAutosQueCorren(long id){
+        List<AutoCarrera> autos = autoCarreraRepository.findAllByCarrera_Id(id);
+        return autos.stream().map(autoCarreraMapper::toDto).collect(Collectors.toList());
+    }
 }
