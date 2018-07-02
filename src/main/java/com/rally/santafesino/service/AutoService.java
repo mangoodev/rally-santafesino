@@ -1,16 +1,25 @@
 package com.rally.santafesino.service;
 
 import com.rally.santafesino.domain.Auto;
+import com.rally.santafesino.domain.Coordenadas;
+import com.rally.santafesino.domain.Persona;
 import com.rally.santafesino.repository.AutoRepository;
+import com.rally.santafesino.repository.PersonaRepository;
 import com.rally.santafesino.service.dto.AutoDTO;
+import com.rally.santafesino.service.dto.PersonaDTO;
 import com.rally.santafesino.service.mapper.AutoMapper;
+import com.rally.santafesino.web.rest.PersonaResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing Auto.
@@ -77,5 +86,15 @@ public class AutoService {
     public void delete(Long id) {
         log.debug("Request to delete Auto : {}", id);
         autoRepository.delete(id);
+    }
+
+    public List<AutoDTO> findByPersona(Long personaId) {
+        log.debug("Request to find Persona by Auto : {}", personaId);
+        List<Auto> autos = autoRepository.findAutoByPiloto_Id(personaId);
+        autos.addAll(autoRepository.findAutoByCopiloto_Id(personaId));
+
+        return autos.stream()
+            .map(autoMapper::toDto)
+            .collect(Collectors.toList());
     }
 }
