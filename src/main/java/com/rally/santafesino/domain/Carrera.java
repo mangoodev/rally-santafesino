@@ -39,6 +39,12 @@ public class Carrera implements Serializable {
     @Column(name = "sede", nullable = false)
     private String sede;
 
+    @Column(name = "inicio_inscripcion")
+    private ZonedDateTime inicioInscripcion;
+
+    @Column(name = "final_inscripcion")
+    private ZonedDateTime finalInscripcion;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -99,6 +105,32 @@ public class Carrera implements Serializable {
     public void setSede(String sede) {
         this.sede = sede;
     }
+
+    public ZonedDateTime getInicioInscripcion() {
+        return inicioInscripcion;
+    }
+
+    public Carrera inicioInscripcion(ZonedDateTime inicioInscripcion) {
+        this.inicioInscripcion = inicioInscripcion;
+        return this;
+    }
+
+    public void setInicioInscripcion(ZonedDateTime inicioInscripcion) {
+        this.inicioInscripcion = inicioInscripcion;
+    }
+
+    public ZonedDateTime getFinalInscripcion() {
+        return finalInscripcion;
+    }
+
+    public Carrera finalInscripcion(ZonedDateTime finalInscripcion) {
+        this.finalInscripcion = finalInscripcion;
+        return this;
+    }
+
+    public void setFinalInscripcion(ZonedDateTime finalInscripcion) {
+        this.finalInscripcion = finalInscripcion;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -129,6 +161,8 @@ public class Carrera implements Serializable {
             ", descripcion='" + getDescripcion() + "'" +
             ", fecha='" + getFecha() + "'" +
             ", sede='" + getSede() + "'" +
+            ", inicioInscripcion='" + getInicioInscripcion() + "'" +
+            ", finalInscripcion='" + getFinalInscripcion() + "'" +
             "}";
     }
 }

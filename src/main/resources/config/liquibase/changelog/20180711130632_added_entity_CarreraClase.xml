@@ -15,42 +15,23 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity Carrera.
+        Added the entity CarreraClase.
     -->
-    <changeSet id="20180611134521-1" author="jhipster">
-        <createTable tableName="carrera">
+    <changeSet id="20180711130632-1" author="jhipster">
+        <createTable tableName="carrera_clase">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="nombre" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="descripcion" type="varchar(255)">
+            <column name="carrera_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
-            <column name="fecha" type="timestamp">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="sede" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="inicio_inscripcion" type="timestamp">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="final_inscripcion" type="timestamp">
+            <column name="clase_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="carrera" columnName="fecha" columnDataType="datetime"/>
-        <dropDefaultValue tableName="carrera" columnName="inicio_inscripcion" columnDataType="datetime"/>
-        <dropDefaultValue tableName="carrera" columnName="final_inscripcion" columnDataType="datetime"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

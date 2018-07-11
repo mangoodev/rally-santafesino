@@ -63,6 +63,26 @@
                 </p>
             </div>
         </div>
+        <div class="form-group">
+            <label class="control-label" for="field_inicioInscripcion">Inicio Inscripcion</label>
+                <div class="input-group">
+                    <input id="field_inicioInscripcion" type="text" class="form-control" name="inicioInscripcion" datetime-picker="{{dateformat}}" ng-model="vm.carrera.inicioInscripcion" is-open="vm.datePickerOpenStatus.inicioInscripcion"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('inicioInscripcion')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_finalInscripcion">Final Inscripcion</label>
+                <div class="input-group">
+                    <input id="field_finalInscripcion" type="text" class="form-control" name="finalInscripcion" datetime-picker="{{dateformat}}" ng-model="vm.carrera.finalInscripcion" is-open="vm.datePickerOpenStatus.finalInscripcion"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('finalInscripcion')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
 
     </div>
     <div class="modal-footer">

@@ -58,6 +58,12 @@ public class CarreraResourceIntTest {
     private static final String DEFAULT_SEDE = "AAAAAAAAAA";
     private static final String UPDATED_SEDE = "BBBBBBBBBB";
 
+    private static final ZonedDateTime DEFAULT_INICIO_INSCRIPCION = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_INICIO_INSCRIPCION = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+
+    private static final ZonedDateTime DEFAULT_FINAL_INSCRIPCION = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_FINAL_INSCRIPCION = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+
     @Autowired
     private CarreraRepository carreraRepository;
 
@@ -105,7 +111,9 @@ public class CarreraResourceIntTest {
             .nombre(DEFAULT_NOMBRE)
             .descripcion(DEFAULT_DESCRIPCION)
             .fecha(DEFAULT_FECHA)
-            .sede(DEFAULT_SEDE);
+            .sede(DEFAULT_SEDE)
+            .inicioInscripcion(DEFAULT_INICIO_INSCRIPCION)
+            .finalInscripcion(DEFAULT_FINAL_INSCRIPCION);
         return carrera;
     }
 
@@ -134,6 +142,8 @@ public class CarreraResourceIntTest {
         assertThat(testCarrera.getDescripcion()).isEqualTo(DEFAULT_DESCRIPCION);
         assertThat(testCarrera.getFecha()).isEqualTo(DEFAULT_FECHA);
         assertThat(testCarrera.getSede()).isEqualTo(DEFAULT_SEDE);
+        assertThat(testCarrera.getInicioInscripcion()).isEqualTo(DEFAULT_INICIO_INSCRIPCION);
+        assertThat(testCarrera.getFinalInscripcion()).isEqualTo(DEFAULT_FINAL_INSCRIPCION);
     }
 
     @Test
@@ -227,7 +237,9 @@ public class CarreraResourceIntTest {
             .andExpect(jsonPath("$.[*].nombre").value(hasItem(DEFAULT_NOMBRE.toString())))
             .andExpect(jsonPath("$.[*].descripcion").value(hasItem(DEFAULT_DESCRIPCION.toString())))
             .andExpect(jsonPath("$.[*].fecha").value(hasItem(sameInstant(DEFAULT_FECHA))))
-            .andExpect(jsonPath("$.[*].sede").value(hasItem(DEFAULT_SEDE.toString())));
+            .andExpect(jsonPath("$.[*].sede").value(hasItem(DEFAULT_SEDE.toString())))
+            .andExpect(jsonPath("$.[*].inicioInscripcion").value(hasItem(sameInstant(DEFAULT_INICIO_INSCRIPCION))))
+            .andExpect(jsonPath("$.[*].finalInscripcion").value(hasItem(sameInstant(DEFAULT_FINAL_INSCRIPCION))));
     }
 
     @Test
@@ -244,7 +256,9 @@ public class CarreraResourceIntTest {
             .andExpect(jsonPath("$.nombre").value(DEFAULT_NOMBRE.toString()))
             .andExpect(jsonPath("$.descripcion").value(DEFAULT_DESCRIPCION.toString()))
             .andExpect(jsonPath("$.fecha").value(sameInstant(DEFAULT_FECHA)))
-            .andExpect(jsonPath("$.sede").value(DEFAULT_SEDE.toString()));
+            .andExpect(jsonPath("$.sede").value(DEFAULT_SEDE.toString()))
+            .andExpect(jsonPath("$.inicioInscripcion").value(sameInstant(DEFAULT_INICIO_INSCRIPCION)))
+            .andExpect(jsonPath("$.finalInscripcion").value(sameInstant(DEFAULT_FINAL_INSCRIPCION)));
     }
 
     @Test
@@ -270,7 +284,9 @@ public class CarreraResourceIntTest {
             .nombre(UPDATED_NOMBRE)
             .descripcion(UPDATED_DESCRIPCION)
             .fecha(UPDATED_FECHA)
-            .sede(UPDATED_SEDE);
+            .sede(UPDATED_SEDE)
+            .inicioInscripcion(UPDATED_INICIO_INSCRIPCION)
+            .finalInscripcion(UPDATED_FINAL_INSCRIPCION);
         CarreraDTO carreraDTO = carreraMapper.toDto(updatedCarrera);
 
         restCarreraMockMvc.perform(put("/api/carreras")
@@ -286,6 +302,8 @@ public class CarreraResourceIntTest {
         assertThat(testCarrera.getDescripcion()).isEqualTo(UPDATED_DESCRIPCION);
         assertThat(testCarrera.getFecha()).isEqualTo(UPDATED_FECHA);
         assertThat(testCarrera.getSede()).isEqualTo(UPDATED_SEDE);
+        assertThat(testCarrera.getInicioInscripcion()).isEqualTo(UPDATED_INICIO_INSCRIPCION);
+        assertThat(testCarrera.getFinalInscripcion()).isEqualTo(UPDATED_FINAL_INSCRIPCION);
     }
 
     @Test

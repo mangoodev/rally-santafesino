@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -96,5 +97,9 @@ public class AutoService {
         return autos.stream()
             .map(autoMapper::toDto)
             .collect(Collectors.toList());
+    }
+
+    public String findClaseByAuto(Long autoId) {
+        return findOne(autoId).getClase();//TODO do in SQL query
     }
 }

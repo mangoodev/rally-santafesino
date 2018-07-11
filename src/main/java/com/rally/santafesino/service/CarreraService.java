@@ -11,6 +11,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.ZonedDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 /**
  * Service Implementation for managing Carrera.
@@ -25,9 +29,15 @@ public class CarreraService {
 
     private final CarreraMapper carreraMapper;
 
-    public CarreraService(CarreraRepository carreraRepository, CarreraMapper carreraMapper) {
+    private final AutoService autoService;
+
+    private final CarreraClaseService carreraClaseService;
+
+    public CarreraService(CarreraRepository carreraRepository, CarreraMapper carreraMapper, AutoService autoService, CarreraClaseService carreraClaseService) {
         this.carreraRepository = carreraRepository;
         this.carreraMapper = carreraMapper;
+        this.autoService = autoService;
+        this.carreraClaseService = carreraClaseService;
     }
 
     /**
@@ -77,5 +87,13 @@ public class CarreraService {
     public void delete(Long id) {
         log.debug("Request to delete Carrera : {}", id);
         carreraRepository.delete(id);
+    }
+
+    public List<CarreraDTO> findCarrerasDisponibles(Long autoId, ZonedDateTime fechaActual) {
+        return carreraClaseService.findCarrerasForClase(autoService.findClaseByAuto(autoId))
+            .stream()
+            .filter((carreraDTO) -> carreraDTO.getInicioInscripcion().isBefore(fechaActual))
+            .filter((carreraDTO) -> carreraDTO.getFinalInscripcion().isAfter(fechaActual))
+            .collect(Collectors.toList());
     }
 }

@@ -24,6 +24,10 @@ public class CarreraDTO implements Serializable {
     @NotNull
     private String sede;
 
+    private ZonedDateTime inicioInscripcion;
+
+    private ZonedDateTime finalInscripcion;
+
     public Long getId() {
         return id;
     }
@@ -64,6 +68,22 @@ public class CarreraDTO implements Serializable {
         this.sede = sede;
     }
 
+    public ZonedDateTime getInicioInscripcion() {
+        return inicioInscripcion;
+    }
+
+    public void setInicioInscripcion(ZonedDateTime inicioInscripcion) {
+        this.inicioInscripcion = inicioInscripcion;
+    }
+
+    public ZonedDateTime getFinalInscripcion() {
+        return finalInscripcion;
+    }
+
+    public void setFinalInscripcion(ZonedDateTime finalInscripcion) {
+        this.finalInscripcion = finalInscripcion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -93,6 +113,8 @@ public class CarreraDTO implements Serializable {
             ", descripcion='" + getDescripcion() + "'" +
             ", fecha='" + getFecha() + "'" +
             ", sede='" + getSede() + "'" +
+            ", inicioInscripcion='" + getInicioInscripcion() + "'" +
+            ", finalInscripcion='" + getFinalInscripcion() + "'" +
             "}";
     }
 }

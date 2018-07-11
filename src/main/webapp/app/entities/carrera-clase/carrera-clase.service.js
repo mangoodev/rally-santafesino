@@ -2,12 +2,12 @@
     'use strict';
     angular
         .module('rallyApp')
-        .factory('Carrera', Carrera);
+        .factory('CarreraClase', CarreraClase);
 
-    Carrera.$inject = ['$resource', 'DateUtils'];
+    CarreraClase.$inject = ['$resource'];
 
-    function Carrera ($resource, DateUtils) {
-        var resourceUrl =  'api/carreras/:id';
+    function CarreraClase ($resource) {
+        var resourceUrl =  'api/carrera-clases/:id';
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
@@ -16,9 +16,6 @@
                 transformResponse: function (data) {
                     if (data) {
                         data = angular.fromJson(data);
-                        data.fecha = DateUtils.convertDateTimeFromServer(data.fecha);
-                        data.inicioInscripcion = DateUtils.convertDateTimeFromServer(data.inicioInscripcion);
-                        data.finalInscripcion = DateUtils.convertDateTimeFromServer(data.finalInscripcion);
                     }
                     return data;
                 }

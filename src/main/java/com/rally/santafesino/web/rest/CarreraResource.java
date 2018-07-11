@@ -20,6 +20,9 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -123,5 +126,13 @@ public class CarreraResource {
         log.debug("REST request to delete Carrera : {}", id);
         carreraService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    @GetMapping("/carreras/getCarrerasDisponibles/{autoId}")
+    @Timed
+    public ResponseEntity<List<CarreraDTO>> getCarrerasDisponibles(@PathVariable Long autoId) {
+        log.debug("REST request to get Auto for Persona : {}", autoId);
+        List<CarreraDTO> carreraDTOs = carreraService.findCarrerasDisponibles(autoId, ZonedDateTime.now());
+        return ResponseEntity.ok().body(carreraDTOs);
     }
 }

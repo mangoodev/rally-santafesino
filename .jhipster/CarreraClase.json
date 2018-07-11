@@ -1,0 +1,24 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "carrera",
+            "otherEntityName": "carrera",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "clase",
+            "otherEntityName": "clase",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20180711130632",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "carrera_clase",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

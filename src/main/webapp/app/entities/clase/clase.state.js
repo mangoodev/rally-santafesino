@@ -9,17 +9,17 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('carrera', {
+        .state('clase', {
             parent: 'entity',
-            url: '/carrera?page&sort&search',
+            url: '/clase?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Carreras'
+                pageTitle: 'Clases'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/carrera/carreras.html',
-                    controller: 'CarreraController',
+                    templateUrl: 'app/entities/clase/clases.html',
+                    controller: 'ClaseController',
                     controllerAs: 'vm'
                 }
             },
@@ -46,27 +46,27 @@
                 }],
             }
         })
-        .state('carrera-detail', {
-            parent: 'carrera',
-            url: '/carrera/{id}',
+        .state('clase-detail', {
+            parent: 'clase',
+            url: '/clase/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Carrera'
+                pageTitle: 'Clase'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/carrera/carrera-detail.html',
-                    controller: 'CarreraDetailController',
+                    templateUrl: 'app/entities/clase/clase-detail.html',
+                    controller: 'ClaseDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
-                entity: ['$stateParams', 'Carrera', function($stateParams, Carrera) {
-                    return Carrera.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'Clase', function($stateParams, Clase) {
+                    return Clase.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
-                        name: $state.current.name || 'carrera',
+                        name: $state.current.name || 'clase',
                         params: $state.params,
                         url: $state.href($state.current.name, $state.params)
                     };
@@ -74,22 +74,22 @@
                 }]
             }
         })
-        .state('carrera-detail.edit', {
-            parent: 'carrera-detail',
+        .state('clase-detail.edit', {
+            parent: 'clase-detail',
             url: '/detail/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/carrera/carrera-dialog.html',
-                    controller: 'CarreraDialogController',
+                    templateUrl: 'app/entities/clase/clase-dialog.html',
+                    controller: 'ClaseDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Carrera', function(Carrera) {
-                            return Carrera.get({id : $stateParams.id}).$promise;
+                        entity: ['Clase', function(Clase) {
+                            return Clase.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -99,16 +99,16 @@
                 });
             }]
         })
-        .state('carrera.new', {
-            parent: 'carrera',
+        .state('clase.new', {
+            parent: 'clase',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/carrera/carrera-dialog.html',
-                    controller: 'CarreraDialogController',
+                    templateUrl: 'app/entities/clase/clase-dialog.html',
+                    controller: 'ClaseDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
@@ -116,66 +116,61 @@
                         entity: function () {
                             return {
                                 nombre: null,
-                                descripcion: null,
-                                fecha: null,
-                                sede: null,
-                                inicioInscripcion: null,
-                                finalInscripcion: null,
                                 id: null
                             };
                         }
                     }
                 }).result.then(function() {
-                    $state.go('carrera', null, { reload: 'carrera' });
+                    $state.go('clase', null, { reload: 'clase' });
                 }, function() {
-                    $state.go('carrera');
+                    $state.go('clase');
                 });
             }]
         })
-        .state('carrera.edit', {
-            parent: 'carrera',
+        .state('clase.edit', {
+            parent: 'clase',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/carrera/carrera-dialog.html',
-                    controller: 'CarreraDialogController',
+                    templateUrl: 'app/entities/clase/clase-dialog.html',
+                    controller: 'ClaseDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Carrera', function(Carrera) {
-                            return Carrera.get({id : $stateParams.id}).$promise;
+                        entity: ['Clase', function(Clase) {
+                            return Clase.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('carrera', null, { reload: 'carrera' });
+                    $state.go('clase', null, { reload: 'clase' });
                 }, function() {
                     $state.go('^');
                 });
             }]
         })
-        .state('carrera.delete', {
-            parent: 'carrera',
+        .state('clase.delete', {
+            parent: 'clase',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/carrera/carrera-delete-dialog.html',
-                    controller: 'CarreraDeleteController',
+                    templateUrl: 'app/entities/clase/clase-delete-dialog.html',
+                    controller: 'ClaseDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Carrera', function(Carrera) {
-                            return Carrera.get({id : $stateParams.id}).$promise;
+                        entity: ['Clase', function(Clase) {
+                            return Clase.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('carrera', null, { reload: 'carrera' });
+                    $state.go('clase', null, { reload: 'clase' });
                 }, function() {
                     $state.go('^');
                 });
