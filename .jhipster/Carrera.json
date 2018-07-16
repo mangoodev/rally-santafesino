@@ -26,6 +26,14 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "inicioInscripcion",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "finalInscripcion",
+            "fieldType": "ZonedDateTime"
         }
     ],
     "changelogDate": "20180611134521",

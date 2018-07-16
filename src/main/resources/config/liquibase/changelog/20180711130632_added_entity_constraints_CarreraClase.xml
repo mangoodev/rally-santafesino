@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity CarreraClase.
+    -->
+    <changeSet id="20180711130632-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="carrera_id"
+                                 baseTableName="carrera_clase"
+                                 constraintName="fk_carrera_clase_carrera_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="carrera"/>
+
+        <addForeignKeyConstraint baseColumnNames="clase_id"
+                                 baseTableName="carrera_clase"
+                                 constraintName="fk_carrera_clase_clase_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="clase"/>
+
+    </changeSet>
+</databaseChangeLog>

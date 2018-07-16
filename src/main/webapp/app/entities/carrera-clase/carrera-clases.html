@@ -1,13 +1,13 @@
 <div>
-    <h2>Carreras</h2>
+    <h2>Carrera Clases</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="carrera.new" >
+                <button class="btn btn-primary" ui-sref="carrera-clase.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Create new Carrera
+                        Create new Carrera Clase
                     </span>
                 </button>
             </div>
@@ -19,40 +19,36 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="nombre"><span>Nombre</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="descripcion"><span>Descripcion</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="fecha"><span>Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="sede"><span>Sede</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="inicioInscripcion"><span>Inicio Inscripcion</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="finalInscripcion"><span>Final Inscripcion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="carreraId"><span>Carrera</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="claseId"><span>Clase</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="carrera in vm.carreras track by carrera.id">
-                    <td><a ui-sref="carrera-detail({id:carrera.id})">{{carrera.id}}</a></td>
-                    <td>{{carrera.nombre}}</td>
-                    <td>{{carrera.descripcion}}</td>
-                    <td>{{carrera.fecha | date:'medium'}}</td>
-                    <td>{{carrera.sede}}</td>
-                    <td>{{carrera.inicioInscripcion | date:'medium'}}</td>
-                    <td>{{carrera.finalInscripcion | date:'medium'}}</td>
+                <tr ng-repeat="carreraClase in vm.carreraClases track by carreraClase.id">
+                    <td><a ui-sref="carrera-clase-detail({id:carreraClase.id})">{{carreraClase.id}}</a></td>
+                    <td>
+                        <a ui-sref="carrera-detail({id:carreraClase.carreraId})">{{carreraClase.carreraId}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="clase-detail({id:carreraClase.claseId})">{{carreraClase.claseId}}</a>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
-                                    ui-sref="carrera-detail({id:carrera.id})"
+                                    ui-sref="carrera-clase-detail({id:carreraClase.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="carrera.edit({id:carrera.id})"
+                                    ui-sref="carrera-clase.edit({id:carreraClase.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="carrera.delete({id:carrera.id})"
+                                    ui-sref="carrera-clase.delete({id:carreraClase.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-sm-down"></span>

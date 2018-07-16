@@ -1,7 +1,9 @@
 package com.rally.santafesino.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.rally.santafesino.domain.Persona;
 import com.rally.santafesino.service.AutoService;
+import com.rally.santafesino.service.dto.PersonaDTO;
 import com.rally.santafesino.web.rest.errors.BadRequestAlertException;
 import com.rally.santafesino.web.rest.util.HeaderUtil;
 import com.rally.santafesino.web.rest.util.PaginationUtil;
@@ -123,5 +125,13 @@ public class AutoResource {
         log.debug("REST request to delete Auto : {}", id);
         autoService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    @GetMapping("/autos/getByPersona/{personaId}")
+    @Timed
+    public ResponseEntity<List<AutoDTO>> getAutoByPersona(@PathVariable Long personaId) {
+        log.debug("REST request to get Auto for Persona : {}", personaId);
+        List<AutoDTO> autoDTOs = autoService.findByPersona(personaId);
+        return ResponseEntity.ok().body(autoDTOs);
     }
 }

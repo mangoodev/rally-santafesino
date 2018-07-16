@@ -9,17 +9,17 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('carrera', {
+        .state('carrera-clase', {
             parent: 'entity',
-            url: '/carrera?page&sort&search',
+            url: '/carrera-clase?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Carreras'
+                pageTitle: 'CarreraClases'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/carrera/carreras.html',
-                    controller: 'CarreraController',
+                    templateUrl: 'app/entities/carrera-clase/carrera-clases.html',
+                    controller: 'CarreraClaseController',
                     controllerAs: 'vm'
                 }
             },
@@ -46,27 +46,27 @@
                 }],
             }
         })
-        .state('carrera-detail', {
-            parent: 'carrera',
-            url: '/carrera/{id}',
+        .state('carrera-clase-detail', {
+            parent: 'carrera-clase',
+            url: '/carrera-clase/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Carrera'
+                pageTitle: 'CarreraClase'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/carrera/carrera-detail.html',
-                    controller: 'CarreraDetailController',
+                    templateUrl: 'app/entities/carrera-clase/carrera-clase-detail.html',
+                    controller: 'CarreraClaseDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
-                entity: ['$stateParams', 'Carrera', function($stateParams, Carrera) {
-                    return Carrera.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'CarreraClase', function($stateParams, CarreraClase) {
+                    return CarreraClase.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
-                        name: $state.current.name || 'carrera',
+                        name: $state.current.name || 'carrera-clase',
                         params: $state.params,
                         url: $state.href($state.current.name, $state.params)
                     };
@@ -74,22 +74,22 @@
                 }]
             }
         })
-        .state('carrera-detail.edit', {
-            parent: 'carrera-detail',
+        .state('carrera-clase-detail.edit', {
+            parent: 'carrera-clase-detail',
             url: '/detail/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/carrera/carrera-dialog.html',
-                    controller: 'CarreraDialogController',
+                    templateUrl: 'app/entities/carrera-clase/carrera-clase-dialog.html',
+                    controller: 'CarreraClaseDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Carrera', function(Carrera) {
-                            return Carrera.get({id : $stateParams.id}).$promise;
+                        entity: ['CarreraClase', function(CarreraClase) {
+                            return CarreraClase.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -99,83 +99,77 @@
                 });
             }]
         })
-        .state('carrera.new', {
-            parent: 'carrera',
+        .state('carrera-clase.new', {
+            parent: 'carrera-clase',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/carrera/carrera-dialog.html',
-                    controller: 'CarreraDialogController',
+                    templateUrl: 'app/entities/carrera-clase/carrera-clase-dialog.html',
+                    controller: 'CarreraClaseDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: function () {
                             return {
-                                nombre: null,
-                                descripcion: null,
-                                fecha: null,
-                                sede: null,
-                                inicioInscripcion: null,
-                                finalInscripcion: null,
                                 id: null
                             };
                         }
                     }
                 }).result.then(function() {
-                    $state.go('carrera', null, { reload: 'carrera' });
+                    $state.go('carrera-clase', null, { reload: 'carrera-clase' });
                 }, function() {
-                    $state.go('carrera');
+                    $state.go('carrera-clase');
                 });
             }]
         })
-        .state('carrera.edit', {
-            parent: 'carrera',
+        .state('carrera-clase.edit', {
+            parent: 'carrera-clase',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/carrera/carrera-dialog.html',
-                    controller: 'CarreraDialogController',
+                    templateUrl: 'app/entities/carrera-clase/carrera-clase-dialog.html',
+                    controller: 'CarreraClaseDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Carrera', function(Carrera) {
-                            return Carrera.get({id : $stateParams.id}).$promise;
+                        entity: ['CarreraClase', function(CarreraClase) {
+                            return CarreraClase.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('carrera', null, { reload: 'carrera' });
+                    $state.go('carrera-clase', null, { reload: 'carrera-clase' });
                 }, function() {
                     $state.go('^');
                 });
             }]
         })
-        .state('carrera.delete', {
-            parent: 'carrera',
+        .state('carrera-clase.delete', {
+            parent: 'carrera-clase',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/carrera/carrera-delete-dialog.html',
-                    controller: 'CarreraDeleteController',
+                    templateUrl: 'app/entities/carrera-clase/carrera-clase-delete-dialog.html',
+                    controller: 'CarreraClaseDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Carrera', function(Carrera) {
-                            return Carrera.get({id : $stateParams.id}).$promise;
+                        entity: ['CarreraClase', function(CarreraClase) {
+                            return CarreraClase.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('carrera', null, { reload: 'carrera' });
+                    $state.go('carrera-clase', null, { reload: 'carrera-clase' });
                 }, function() {
                     $state.go('^');
                 });
