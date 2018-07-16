@@ -3,13 +3,18 @@ package com.rally.santafesino.service;
 import com.rally.santafesino.domain.AutoCarrera;
 import com.rally.santafesino.repository.AutoCarreraRepository;
 import com.rally.santafesino.service.dto.AutoCarreraDTO;
+import com.rally.santafesino.service.dto.CarreraDTO;
 import com.rally.santafesino.service.mapper.AutoCarreraMapper;
+import com.rally.santafesino.service.mapper.CarreraMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -25,9 +30,12 @@ public class AutoCarreraService {
 
     private final AutoCarreraMapper autoCarreraMapper;
 
-    public AutoCarreraService(AutoCarreraRepository autoCarreraRepository, AutoCarreraMapper autoCarreraMapper) {
+    private final CarreraMapper carreraMapper;
+
+    public AutoCarreraService(AutoCarreraRepository autoCarreraRepository, AutoCarreraMapper autoCarreraMapper, CarreraMapper carreraMapper) {
         this.autoCarreraRepository = autoCarreraRepository;
         this.autoCarreraMapper = autoCarreraMapper;
+        this.carreraMapper = carreraMapper;
     }
 
     /**
@@ -77,5 +85,13 @@ public class AutoCarreraService {
     public void delete(Long id) {
         log.debug("Request to delete AutoCarrera : {}", id);
         autoCarreraRepository.delete(id);
+    }
+
+    public List<CarreraDTO> findCarrerasByAuto(Long autoId) {
+        return autoCarreraRepository.findAutoCarreraByAuto_Id(autoId)
+            .stream()
+            .map(AutoCarrera::getCarrera)
+            .map(carreraMapper::toDto)
+            .collect(Collectors.toList());
     }
 }

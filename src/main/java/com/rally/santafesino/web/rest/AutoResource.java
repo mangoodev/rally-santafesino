@@ -1,9 +1,9 @@
 package com.rally.santafesino.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import com.rally.santafesino.domain.Persona;
+import com.rally.santafesino.service.AutoCarreraService;
 import com.rally.santafesino.service.AutoService;
-import com.rally.santafesino.service.dto.PersonaDTO;
+import com.rally.santafesino.service.dto.CarreraDTO;
 import com.rally.santafesino.web.rest.errors.BadRequestAlertException;
 import com.rally.santafesino.web.rest.util.HeaderUtil;
 import com.rally.santafesino.web.rest.util.PaginationUtil;
@@ -22,8 +22,10 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * REST controller for managing Auto.
@@ -133,5 +135,14 @@ public class AutoResource {
         log.debug("REST request to get Auto for Persona : {}", personaId);
         List<AutoDTO> autoDTOs = autoService.findByPersona(personaId);
         return ResponseEntity.ok().body(autoDTOs);
+    }
+
+    @GetMapping("/autos/getHistorial/{autoId}")
+    @Timed
+    public ResponseEntity<Set<CarreraDTO>> getHistorial(@PathVariable Long autoId) {
+        log.debug("REST request to get Auto for Persona : {}", autoId);
+
+        Set<CarreraDTO> carreraDTOs = autoService.findHistorialForAuto(autoId, ZonedDateTime.now());
+        return ResponseEntity.ok().body(carreraDTOs);
     }
 }
