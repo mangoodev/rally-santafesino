@@ -1,7 +1,13 @@
 package com.rally.santafesino.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.rally.santafesino.service.AutoCarreraService;
+import com.rally.santafesino.service.AutoService;
+import com.rally.santafesino.service.CarreraService;
 import com.rally.santafesino.service.PersonaService;
+import com.rally.santafesino.service.dto.AutoCarreraDTO;
+import com.rally.santafesino.service.dto.AutoDTO;
+import com.rally.santafesino.service.dto.CarreraDTO;
 import com.rally.santafesino.web.rest.errors.BadRequestAlertException;
 import com.rally.santafesino.web.rest.util.HeaderUtil;
 import com.rally.santafesino.web.rest.util.PaginationUtil;
@@ -36,8 +42,17 @@ public class PersonaResource {
 
     private final PersonaService personaService;
 
-    public PersonaResource(PersonaService personaService) {
+    private final AutoService autoService;
+
+    private final AutoCarreraService autoCarreraService;
+
+    private final CarreraService carreraService;
+
+    public PersonaResource(PersonaService personaService, AutoService autoService, AutoCarreraService autoCarreraService, CarreraService carreraService) {
         this.personaService = personaService;
+        this.autoService  = autoService;
+        this.autoCarreraService = autoCarreraService;
+        this.carreraService = carreraService;
     }
 
     /**
@@ -123,5 +138,15 @@ public class PersonaResource {
         log.debug("REST request to delete Persona : {}", id);
         personaService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    @GetMapping("/personas/historial/{id}")
+    @Timed
+    public ResponseEntity<List<CarreraDTO>> getHistorialCarrerasPersona(@PathVariable Long id) {
+        PersonaDTO personaDTO = personaService.findOne(id);
+        List<AutoDTO> autosDeLaPersona = autoService.findByPersona(id);
+        List<AutoCarreraDTO>  autoCarreras = autoCarreraService.findByIdsAutos(autosDeLaPersona);
+        List<CarreraDTO> historial = carreraService.findCarreras(autoCarreras);
+        return ResponseEntity.ok(historial);
     }
 }

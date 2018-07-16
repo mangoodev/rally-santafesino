@@ -4,6 +4,7 @@ import com.rally.santafesino.domain.AutoCarrera;
 import com.rally.santafesino.domain.Carrera;
 import com.rally.santafesino.repository.AutoCarreraRepository;
 import com.rally.santafesino.repository.CarreraRepository;
+import com.rally.santafesino.service.dto.AutoCarreraDTO;
 import com.rally.santafesino.service.dto.CarreraDTO;
 import com.rally.santafesino.service.mapper.AutoMapper;
 import com.rally.santafesino.service.mapper.CarreraMapper;
@@ -18,6 +19,7 @@ import java.time.ZonedDateTime;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -136,5 +138,15 @@ public class CarreraService {
         List<AutoCarrera> autoCarreras = autoCarreraRepository.findAllByCarrera_Id(carrera.getId());
         carreraDto.setAutos(autoCarreras.stream().map(AutoCarrera::getAuto).map(autoMapper::toDto).collect(Collectors.toList()));
         return carreraDto;
+    }
+
+    public List<CarreraDTO> findCarreras(List<AutoCarreraDTO> autoCarreras) {
+        Set<Carrera> historial = null;
+        for(AutoCarreraDTO autoCarreraDTO : autoCarreras){
+            historial.add(carreraRepository.findOne(autoCarreraDTO.getCarreraId()));
+        }
+        List<CarreraDTO> historialDTO = null;
+        historialDTO = historial.stream().map(carreraMapper::toDto).collect(Collectors.toList());
+        return historialDTO;
     }
 }

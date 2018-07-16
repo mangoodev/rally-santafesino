@@ -4,6 +4,7 @@ import com.rally.santafesino.domain.AutoCarrera;
 import com.rally.santafesino.repository.AutoCarreraRepository;
 import com.rally.santafesino.service.dto.AutoCarreraDTO;
 import com.rally.santafesino.service.dto.CarreraDTO;
+import com.rally.santafesino.service.dto.AutoDTO;
 import com.rally.santafesino.service.mapper.AutoCarreraMapper;
 import com.rally.santafesino.service.mapper.CarreraMapper;
 import org.slf4j.Logger;
@@ -98,5 +99,13 @@ public class AutoCarreraService {
     public List<AutoCarreraDTO> getAutosQueCorren(long id){
         List<AutoCarrera> autos = autoCarreraRepository.findAllByCarrera_Id(id);
         return autos.stream().map(autoCarreraMapper::toDto).collect(Collectors.toList());
+    }
+
+    public List<AutoCarreraDTO> findByIdsAutos(List<AutoDTO> autosDeLaPersona) {
+        List<AutoCarreraDTO> autoCarreras = null;
+        for(AutoDTO autoDTO : autosDeLaPersona){
+            autoCarreras.addAll(autoCarreraRepository.findAllByAuto_Id(autoDTO.getId()).stream().map(autoCarreraMapper::toDto).collect(Collectors.toList()));
+        }
+        return autoCarreras;
     }
 }
