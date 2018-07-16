@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -102,7 +103,7 @@ public class AutoCarreraService {
     }
 
     public List<AutoCarreraDTO> findByIdsAutos(List<AutoDTO> autosDeLaPersona) {
-        List<AutoCarreraDTO> autoCarreras = null;
+        List<AutoCarreraDTO> autoCarreras = new ArrayList<AutoCarreraDTO>();
         for(AutoDTO autoDTO : autosDeLaPersona){
             autoCarreras.addAll(autoCarreraRepository.findAllByAuto_Id(autoDTO.getId()).stream().map(autoCarreraMapper::toDto).collect(Collectors.toList()));
         }

@@ -21,6 +21,4 @@ public interface AutoRepository extends JpaRepository<Auto, Long> {
     List<Auto> findAutoByPiloto_Id(Long piloto);
 
     List<Auto> findAutoByCopiloto_Id(Long piloto);
-
-    List<Auto> findByPilotoOrFindByCopiloto(Persona corredor);
 }
