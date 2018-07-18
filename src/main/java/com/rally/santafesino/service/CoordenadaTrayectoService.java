@@ -3,13 +3,18 @@ package com.rally.santafesino.service;
 import com.rally.santafesino.domain.CoordenadaTrayecto;
 import com.rally.santafesino.repository.CoordenadaTrayectoRepository;
 import com.rally.santafesino.service.dto.CoordenadaTrayectoDTO;
+import com.rally.santafesino.service.dto.CoordenadasDTO;
 import com.rally.santafesino.service.mapper.CoordenadaTrayectoMapper;
+import com.rally.santafesino.service.mapper.CoordenadasMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -25,9 +30,12 @@ public class CoordenadaTrayectoService {
 
     private final CoordenadaTrayectoMapper coordenadaTrayectoMapper;
 
-    public CoordenadaTrayectoService(CoordenadaTrayectoRepository coordenadaTrayectoRepository, CoordenadaTrayectoMapper coordenadaTrayectoMapper) {
+    private final CoordenadasMapper coordenadasMapper;
+
+    public CoordenadaTrayectoService(CoordenadaTrayectoRepository coordenadaTrayectoRepository, CoordenadaTrayectoMapper coordenadaTrayectoMapper, CoordenadasMapper coordenadasMapper) {
         this.coordenadaTrayectoRepository = coordenadaTrayectoRepository;
         this.coordenadaTrayectoMapper = coordenadaTrayectoMapper;
+        this.coordenadasMapper = coordenadasMapper;
     }
 
     /**
@@ -77,5 +85,13 @@ public class CoordenadaTrayectoService {
     public void delete(Long id) {
         log.debug("Request to delete CoordenadaTrayecto : {}", id);
         coordenadaTrayectoRepository.delete(id);
+    }
+
+    public List<CoordenadasDTO> findCoordenadasByTrayecto(Long trayectoId) {
+        return coordenadaTrayectoRepository.findAllByTrayecto(trayectoId)
+            .stream()
+            .map(CoordenadaTrayecto::getId_coordenadas)
+            .map(coordenadasMapper::toDto)
+            .collect(Collectors.toList());
     }
 }
