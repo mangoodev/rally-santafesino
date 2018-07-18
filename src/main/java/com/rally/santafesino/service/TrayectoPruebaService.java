@@ -1,8 +1,13 @@
 package com.rally.santafesino.service;
 
+import com.rally.santafesino.domain.Etapa;
+import com.rally.santafesino.domain.EtapaPrueba;
+import com.rally.santafesino.domain.Trayecto;
 import com.rally.santafesino.domain.TrayectoPrueba;
 import com.rally.santafesino.repository.TrayectoPruebaRepository;
+import com.rally.santafesino.service.dto.TrayectoDTO;
 import com.rally.santafesino.service.dto.TrayectoPruebaDTO;
+import com.rally.santafesino.service.mapper.TrayectoMapper;
 import com.rally.santafesino.service.mapper.TrayectoPruebaMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +15,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -25,9 +33,12 @@ public class TrayectoPruebaService {
 
     private final TrayectoPruebaMapper trayectoPruebaMapper;
 
-    public TrayectoPruebaService(TrayectoPruebaRepository trayectoPruebaRepository, TrayectoPruebaMapper trayectoPruebaMapper) {
+    private final TrayectoMapper trayectoMapper;
+
+    public TrayectoPruebaService(TrayectoPruebaRepository trayectoPruebaRepository, TrayectoPruebaMapper trayectoPruebaMapper, TrayectoMapper trayectoMapper) {
         this.trayectoPruebaRepository = trayectoPruebaRepository;
         this.trayectoPruebaMapper = trayectoPruebaMapper;
+        this.trayectoMapper = trayectoMapper;
     }
 
     /**
@@ -77,5 +88,13 @@ public class TrayectoPruebaService {
     public void delete(Long id) {
         log.debug("Request to delete TrayectoPrueba : {}", id);
         trayectoPruebaRepository.delete(id);
+    }
+
+    public List<TrayectoDTO> findTrayectosByPruebas(Long pruebasId) {
+        return trayectoPruebaRepository.findAllByPrueba(pruebasId)
+            .stream()
+            .map(TrayectoPrueba::getId_trayecto)
+            .map(trayectoMapper::toDto)
+            .collect(Collectors.toList());
     }
 }

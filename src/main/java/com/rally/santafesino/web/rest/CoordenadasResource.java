@@ -2,6 +2,7 @@ package com.rally.santafesino.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.rally.santafesino.service.CoordenadasService;
+import com.rally.santafesino.service.dto.CarreraDTO;
 import com.rally.santafesino.web.rest.errors.BadRequestAlertException;
 import com.rally.santafesino.web.rest.util.HeaderUtil;
 import com.rally.santafesino.web.rest.util.PaginationUtil;
@@ -123,5 +124,12 @@ public class CoordenadasResource {
         log.debug("REST request to delete Coordenadas : {}", id);
         coordenadasService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    @GetMapping("/coordenadas/getRecorridoForCarrera/{carreraId}")
+    @Timed
+    public ResponseEntity<List<CoordenadasDTO>> getRecorridoForCarrera(@PathVariable Long carreraId) {
+        List<CoordenadasDTO> carreraDTOs = coordenadasService.findRecorridoForCarrera(carreraId);
+        return ResponseEntity.ok().body(carreraDTOs);
     }
 }

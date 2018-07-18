@@ -1,15 +1,22 @@
 package com.rally.santafesino.service;
 
+import com.rally.santafesino.domain.Carrera;
 import com.rally.santafesino.domain.CarreraEtapa;
 import com.rally.santafesino.repository.CarreraEtapaRepository;
 import com.rally.santafesino.service.dto.CarreraEtapaDTO;
+import com.rally.santafesino.service.dto.EtapaDTO;
 import com.rally.santafesino.service.mapper.CarreraEtapaMapper;
+import com.rally.santafesino.service.mapper.EtapaMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 
 /**
@@ -25,9 +32,12 @@ public class CarreraEtapaService {
 
     private final CarreraEtapaMapper carreraEtapaMapper;
 
-    public CarreraEtapaService(CarreraEtapaRepository carreraEtapaRepository, CarreraEtapaMapper carreraEtapaMapper) {
+    private final EtapaMapper etapaMapper;
+
+    public CarreraEtapaService(CarreraEtapaRepository carreraEtapaRepository, CarreraEtapaMapper carreraEtapaMapper, EtapaMapper etapaMapper) {
         this.carreraEtapaRepository = carreraEtapaRepository;
         this.carreraEtapaMapper = carreraEtapaMapper;
+        this.etapaMapper = etapaMapper;
     }
 
     /**
@@ -77,5 +87,13 @@ public class CarreraEtapaService {
     public void delete(Long id) {
         log.debug("Request to delete CarreraEtapa : {}", id);
         carreraEtapaRepository.delete(id);
+    }
+
+    public List<EtapaDTO> findEtapasByCarrera(Long carreraId) {
+        return carreraEtapaRepository.findAllByCarrera(carreraId)
+            .stream()
+            .map(CarreraEtapa::getId_etapa)
+            .map(etapaMapper::toDto)
+            .collect(Collectors.toList());
     }
 }

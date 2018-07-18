@@ -2,14 +2,20 @@ package com.rally.santafesino.service;
 
 import com.rally.santafesino.domain.EtapaPrueba;
 import com.rally.santafesino.repository.EtapaPruebaRepository;
+import com.rally.santafesino.service.dto.EtapaDTO;
 import com.rally.santafesino.service.dto.EtapaPruebaDTO;
+import com.rally.santafesino.service.dto.PruebasDTO;
 import com.rally.santafesino.service.mapper.EtapaPruebaMapper;
+import com.rally.santafesino.service.mapper.PruebasMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -25,9 +31,12 @@ public class EtapaPruebaService {
 
     private final EtapaPruebaMapper etapaPruebaMapper;
 
-    public EtapaPruebaService(EtapaPruebaRepository etapaPruebaRepository, EtapaPruebaMapper etapaPruebaMapper) {
+    private final PruebasMapper pruebasMapper;
+
+    public EtapaPruebaService(EtapaPruebaRepository etapaPruebaRepository, EtapaPruebaMapper etapaPruebaMapper, PruebasMapper pruebasMapper) {
         this.etapaPruebaRepository = etapaPruebaRepository;
         this.etapaPruebaMapper = etapaPruebaMapper;
+        this.pruebasMapper = pruebasMapper;
     }
 
     /**
@@ -77,5 +86,13 @@ public class EtapaPruebaService {
     public void delete(Long id) {
         log.debug("Request to delete EtapaPrueba : {}", id);
         etapaPruebaRepository.delete(id);
+    }
+
+    public List<PruebasDTO> findPruebasByEtapa(Long etapaId) {
+        return etapaPruebaRepository.findAllByEtapa(etapaId)
+            .stream()
+            .map(EtapaPrueba::getId_prueba)
+            .map(pruebasMapper::toDto)
+            .collect(Collectors.toList());
     }
 }
