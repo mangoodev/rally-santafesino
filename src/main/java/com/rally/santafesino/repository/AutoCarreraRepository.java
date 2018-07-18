@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -15,4 +16,8 @@ import java.util.List;
 @Repository
 public interface AutoCarreraRepository extends JpaRepository<AutoCarrera, Long> {
     List<AutoCarrera> findAutoCarreraByAuto_Id(Long autoId);
+
+    List<AutoCarrera> findAllByCarrera_Id(Long id);
+
+    List<AutoCarrera> findAllByAuto_Id(Long id);
 }

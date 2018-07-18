@@ -115,6 +115,7 @@
                     resolve: {
                         entity: function () {
                             return {
+                                posicion: null,
                                 id: null
                             };
                         }

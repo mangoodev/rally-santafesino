@@ -43,6 +43,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = RallyApp.class)
 public class AutoCarreraResourceIntTest {
 
+    private static final Integer DEFAULT_POSICION = 1;
+    private static final Integer UPDATED_POSICION = 2;
+
     @Autowired
     private AutoCarreraRepository autoCarreraRepository;
 
@@ -86,7 +89,8 @@ public class AutoCarreraResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static AutoCarrera createEntity(EntityManager em) {
-        AutoCarrera autoCarrera = new AutoCarrera();
+        AutoCarrera autoCarrera = new AutoCarrera()
+            .posicion(DEFAULT_POSICION);
         // Add required entity
         Auto auto = AutoResourceIntTest.createEntity(em);
         em.persist(auto);
@@ -121,6 +125,7 @@ public class AutoCarreraResourceIntTest {
         List<AutoCarrera> autoCarreraList = autoCarreraRepository.findAll();
         assertThat(autoCarreraList).hasSize(databaseSizeBeforeCreate + 1);
         AutoCarrera testAutoCarrera = autoCarreraList.get(autoCarreraList.size() - 1);
+        assertThat(testAutoCarrera.getPosicion()).isEqualTo(DEFAULT_POSICION);
     }
 
     @Test
@@ -153,7 +158,8 @@ public class AutoCarreraResourceIntTest {
         restAutoCarreraMockMvc.perform(get("/api/auto-carreras?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(autoCarrera.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(autoCarrera.getId().intValue())))
+            .andExpect(jsonPath("$.[*].posicion").value(hasItem(DEFAULT_POSICION)));
     }
 
     @Test
@@ -166,7 +172,8 @@ public class AutoCarreraResourceIntTest {
         restAutoCarreraMockMvc.perform(get("/api/auto-carreras/{id}", autoCarrera.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(autoCarrera.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(autoCarrera.getId().intValue()))
+            .andExpect(jsonPath("$.posicion").value(DEFAULT_POSICION));
     }
 
     @Test
@@ -188,6 +195,8 @@ public class AutoCarreraResourceIntTest {
         AutoCarrera updatedAutoCarrera = autoCarreraRepository.findOne(autoCarrera.getId());
         // Disconnect from session so that the updates on updatedAutoCarrera are not directly saved in db
         em.detach(updatedAutoCarrera);
+        updatedAutoCarrera
+            .posicion(UPDATED_POSICION);
         AutoCarreraDTO autoCarreraDTO = autoCarreraMapper.toDto(updatedAutoCarrera);
 
         restAutoCarreraMockMvc.perform(put("/api/auto-carreras")
@@ -199,6 +208,7 @@ public class AutoCarreraResourceIntTest {
         List<AutoCarrera> autoCarreraList = autoCarreraRepository.findAll();
         assertThat(autoCarreraList).hasSize(databaseSizeBeforeUpdate);
         AutoCarrera testAutoCarrera = autoCarreraList.get(autoCarreraList.size() - 1);
+        assertThat(testAutoCarrera.getPosicion()).isEqualTo(UPDATED_POSICION);
     }
 
     @Test

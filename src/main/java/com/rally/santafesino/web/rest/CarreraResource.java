@@ -1,7 +1,9 @@
 package com.rally.santafesino.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.rally.santafesino.service.AutoCarreraService;
 import com.rally.santafesino.service.CarreraService;
+import com.rally.santafesino.service.dto.AutoCarreraDTO;
 import com.rally.santafesino.web.rest.errors.BadRequestAlertException;
 import com.rally.santafesino.web.rest.util.HeaderUtil;
 import com.rally.santafesino.web.rest.util.PaginationUtil;
@@ -22,6 +24,7 @@ import java.net.URISyntaxException;
 
 import java.time.Instant;
 import java.time.ZoneId;
+
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -96,6 +99,10 @@ public class CarreraResource {
     public ResponseEntity<List<CarreraDTO>> getAllCarreras(Pageable pageable) {
         log.debug("REST request to get a page of Carreras");
         Page<CarreraDTO> page = carreraService.findAll(pageable);
+
+        List<CarreraDTO> dd = carreraService.findAll();
+
+
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/carreras");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -134,5 +141,24 @@ public class CarreraResource {
         log.debug("REST request to get Auto for Persona : {}", autoId);
         List<CarreraDTO> carreraDTOs = carreraService.findCarrerasDisponibles(autoId, ZonedDateTime.now());
         return ResponseEntity.ok().body(carreraDTOs);
+    }
+
+    @PostMapping("/carreras/byFecha")
+    @Timed
+    public ResponseEntity<List<CarreraDTO>> getCarreraByFecha(@RequestBody ZonedDateTime a) {
+        log.debug("REST request to lalalallalaa Carrera : {}", a);
+        if(a == null) {
+            new ResponseEntity<>(null, null, HttpStatus.BAD_REQUEST);
+        }
+        List<CarreraDTO> carreraDTOs = carreraService.getCarreraByFecha(ZonedDateTime.now());
+        return new ResponseEntity<>(carreraDTOs, null, HttpStatus.OK);
+    }
+    @GetMapping("/carreras/detalle/{id}")
+    @Timed
+    public ResponseEntity<CarreraDTO> getDetalleCarrera(@PathVariable Long id) {
+        log.debug("REST request to lalalallalaa Carrera : {}");
+
+        CarreraDTO carrera = carreraService.findCarreraWithAutoById(id);
+        return new ResponseEntity<>(carrera, null, HttpStatus.OK);
     }
 }

@@ -32,7 +32,11 @@ public class AutoDTO implements Serializable {
 
     private Long copilotoId;
 
+    private String copilotoNombre;
+
     private Long pilotoId;
+
+    private String pilotoNombre;
 
     public Long getId() {
         return id;
@@ -137,5 +141,21 @@ public class AutoDTO implements Serializable {
             ", descripcion='" + getDescripcion() + "'" +
             ", clase='" + getClase() + "'" +
             "}";
+    }
+
+    public String getPilotoNombre() {
+        return pilotoNombre;
+    }
+
+    public void setPilotoNombre(String pilotoNombre) {
+        this.pilotoNombre = pilotoNombre;
+    }
+
+    public String getCopilotoNombre() {
+        return copilotoNombre;
+    }
+
+    public void setCopilotoNombre(String copilotoNombre) {
+        this.copilotoNombre = copilotoNombre;
     }
 }

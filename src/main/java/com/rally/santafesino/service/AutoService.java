@@ -1,7 +1,9 @@
 package com.rally.santafesino.service;
 
 import com.rally.santafesino.domain.Auto;
+import com.rally.santafesino.repository.AutoCarreraRepository;
 import com.rally.santafesino.repository.AutoRepository;
+import com.rally.santafesino.repository.PersonaRepository;
 import com.rally.santafesino.service.dto.AutoDTO;
 import com.rally.santafesino.service.dto.CarreraDTO;
 import com.rally.santafesino.service.mapper.AutoMapper;
@@ -32,7 +34,7 @@ public class AutoService {
 
     private final AutoCarreraService autoCarreraService;
 
-    public AutoService(AutoRepository autoRepository, AutoMapper autoMapper, AutoCarreraService autoCarreraService) {
+    public AutoService(AutoRepository autoRepository, AutoCarreraService autoCarreraService, AutoMapper autoMapper) {
         this.autoRepository = autoRepository;
         this.autoMapper = autoMapper;
         this.autoCarreraService = autoCarreraService;

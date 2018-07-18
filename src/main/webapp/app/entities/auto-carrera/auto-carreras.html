@@ -19,6 +19,7 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="posicion"><span>Posicion</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="autoId"><span>Auto</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="carreraId"><span>Carrera</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
@@ -27,6 +28,7 @@
             <tbody>
                 <tr ng-repeat="autoCarrera in vm.autoCarreras track by autoCarrera.id">
                     <td><a ui-sref="auto-carrera-detail({id:autoCarrera.id})">{{autoCarrera.id}}</a></td>
+                    <td>{{autoCarrera.posicion}}</td>
                     <td>
                         <a ui-sref="auto-detail({id:autoCarrera.autoId})">{{autoCarrera.autoId}}</a>
                     </td>

@@ -4,6 +4,7 @@ import com.rally.santafesino.domain.AutoCarrera;
 import com.rally.santafesino.repository.AutoCarreraRepository;
 import com.rally.santafesino.service.dto.AutoCarreraDTO;
 import com.rally.santafesino.service.dto.CarreraDTO;
+import com.rally.santafesino.service.dto.AutoDTO;
 import com.rally.santafesino.service.mapper.AutoCarreraMapper;
 import com.rally.santafesino.service.mapper.CarreraMapper;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -93,5 +95,18 @@ public class AutoCarreraService {
             .map(AutoCarrera::getCarrera)
             .map(carreraMapper::toDto)
             .collect(Collectors.toList());
+    }
+
+    public List<AutoCarreraDTO> getAutosQueCorren(long id){
+        List<AutoCarrera> autos = autoCarreraRepository.findAllByCarrera_Id(id);
+        return autos.stream().map(autoCarreraMapper::toDto).collect(Collectors.toList());
+    }
+
+    public List<AutoCarreraDTO> findByIdsAutos(List<AutoDTO> autosDeLaPersona) {
+        List<AutoCarreraDTO> autoCarreras = new ArrayList<AutoCarreraDTO>();
+        for(AutoDTO autoDTO : autosDeLaPersona){
+            autoCarreras.addAll(autoCarreraRepository.findAllByAuto_Id(autoDTO.getId()).stream().map(autoCarreraMapper::toDto).collect(Collectors.toList()));
+        }
+        return autoCarreras;
     }
 }
