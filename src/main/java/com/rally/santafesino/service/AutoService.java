@@ -1,25 +1,20 @@
 package com.rally.santafesino.service;
 
 import com.rally.santafesino.domain.Auto;
-import com.rally.santafesino.domain.Coordenadas;
-import com.rally.santafesino.domain.Persona;
 import com.rally.santafesino.repository.AutoRepository;
-import com.rally.santafesino.repository.PersonaRepository;
 import com.rally.santafesino.service.dto.AutoDTO;
-import com.rally.santafesino.service.dto.PersonaDTO;
+import com.rally.santafesino.service.dto.CarreraDTO;
 import com.rally.santafesino.service.mapper.AutoMapper;
-import com.rally.santafesino.web.rest.PersonaResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -35,9 +30,12 @@ public class AutoService {
 
     private final AutoMapper autoMapper;
 
-    public AutoService(AutoRepository autoRepository, AutoMapper autoMapper) {
+    private final AutoCarreraService autoCarreraService;
+
+    public AutoService(AutoRepository autoRepository, AutoMapper autoMapper, AutoCarreraService autoCarreraService) {
         this.autoRepository = autoRepository;
         this.autoMapper = autoMapper;
+        this.autoCarreraService = autoCarreraService;
     }
 
     /**
@@ -101,5 +99,12 @@ public class AutoService {
 
     public String findClaseByAuto(Long autoId) {
         return findOne(autoId).getClase();//TODO do in SQL query
+    }
+
+    public Set<CarreraDTO> findHistorialForAuto(Long autoId, ZonedDateTime fechaActual) {
+        return autoCarreraService.findCarrerasByAuto(autoId)
+            .stream()
+            .filter(carreraDTO -> carreraDTO.getFecha().isBefore(fechaActual))
+            .collect(Collectors.toSet());
     }
 }
