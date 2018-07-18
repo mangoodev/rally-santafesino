@@ -14,6 +14,8 @@ public class AutoCarreraDTO implements Serializable {
 
     private Long id;
 
+    private Integer posicion;
+
     private Long autoId;
 
     private Long carreraId;
@@ -24,6 +26,14 @@ public class AutoCarreraDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getPosicion() {
+        return posicion;
+    }
+
+    public void setPosicion(Integer posicion) {
+        this.posicion = posicion;
     }
 
     public Long getAutoId() {
@@ -67,6 +77,7 @@ public class AutoCarreraDTO implements Serializable {
     public String toString() {
         return "AutoCarreraDTO{" +
             "id=" + getId() +
+            ", posicion=" + getPosicion() +
             "}";
     }
 }

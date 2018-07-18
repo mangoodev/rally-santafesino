@@ -149,4 +149,5 @@ public class PersonaResource {
         List<CarreraDTO> historial = carreraService.findCarreras(autoCarreras);
         return ResponseEntity.ok(historial);
     }
+
 }

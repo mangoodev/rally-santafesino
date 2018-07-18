@@ -20,7 +20,12 @@
             "otherEntityField": "id"
         }
     ],
-    "fields": [],
+    "fields": [
+        {
+            "fieldName": "posicion",
+            "fieldType": "Integer"
+        }
+    ],
     "changelogDate": "20180611135405",
     "dto": "mapstruct",
     "service": "serviceClass",

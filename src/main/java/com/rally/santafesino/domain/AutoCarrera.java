@@ -23,6 +23,9 @@ public class AutoCarrera implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "posicion")
+    private Integer posicion;
+
     @ManyToOne(optional = false)
     @NotNull
     private Auto auto;
@@ -38,6 +41,19 @@ public class AutoCarrera implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getPosicion() {
+        return posicion;
+    }
+
+    public AutoCarrera posicion(Integer posicion) {
+        this.posicion = posicion;
+        return this;
+    }
+
+    public void setPosicion(Integer posicion) {
+        this.posicion = posicion;
     }
 
     public Auto getAuto() {
@@ -91,6 +107,7 @@ public class AutoCarrera implements Serializable {
     public String toString() {
         return "AutoCarrera{" +
             "id=" + getId() +
+            ", posicion=" + getPosicion() +
             "}";
     }
 }

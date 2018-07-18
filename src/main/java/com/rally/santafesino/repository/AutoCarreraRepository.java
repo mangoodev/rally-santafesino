@@ -1,7 +1,6 @@
 package com.rally.santafesino.repository;
 
 import com.rally.santafesino.domain.AutoCarrera;
-import com.rally.santafesino.domain.Carrera;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
